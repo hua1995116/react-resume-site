@@ -22,12 +22,11 @@ const RenderList: React.FC<Props> = (props) => {
 
 function App() {
   const [data, setData] = useState(false)
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<string[]>([]);
   const handleClick = () => {
     setData(!data);
+    setList(['12', '34']);
   }
-
-
 
   return (
     <div className="App">
@@ -47,10 +46,7 @@ function App() {
         >
           Learn React
         </a>
-        <RenderList></RenderList>
-        {/* {
-          renderList()
-        } */}
+        <RenderList list={list}></RenderList>
       </header>
     </div>
   );

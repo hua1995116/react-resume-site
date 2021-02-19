@@ -60,6 +60,8 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -322,6 +324,9 @@ module.exports = function (webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
+        '@src': path.resolve(__dirname, '../src'),
+        '@pages': path.resolve(__dirname, '../src/pages'),
+        '@utils': path.resolve(__dirname, '../src/utils'),
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
@@ -417,6 +422,7 @@ module.exports = function (webpackEnv) {
                       },
                     },
                   ],
+                  ["import", { libraryName: "antd-mobile", style: "css" }],
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
                     require.resolve('react-refresh/babel'),
@@ -496,6 +502,39 @@ module.exports = function (webpackEnv) {
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the
             // extensions .module.scss or .module.sass
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 1,
+                  sourceMap: isEnvProduction
+                    ? shouldUseSourceMap
+                    : isEnvDevelopment,
+                },
+                'less-loader'
+              ),
+              // Don't consider CSS imports dead code even if the
+              // containing package claims to have no side effects.
+              // Remove this when webpack adds a warning or an error for this.
+              // See https://github.com/webpack/webpack/issues/6571
+              sideEffects: true,
+            },
+            {
+              test: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 1,
+                  sourceMap: isEnvProduction
+                    ? shouldUseSourceMap
+                    : isEnvDevelopment,
+                  modules: {
+                    getLocalIdent: getCSSModuleLocalIdent,
+                  },
+                },
+                'less-loader'
+              ),
+            },
             {
               test: sassRegex,
               exclude: sassModuleRegex,

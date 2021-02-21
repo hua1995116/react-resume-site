@@ -14,6 +14,7 @@ let timerSave: TimerSave = null;
 const localContent = localStorage.getItem('md-resume');
 
 const defaultContent = localContent || `
+
 ::::: header
 :::: title
 ::: left
@@ -35,11 +36,11 @@ const defaultContent = localContent || `
 
 :::
 ::: right
-http://yifenghua.win
+https://qiufeng.blue
 
 https://github.com/hua1995116
 
-掘金
+掘金 https://juejin.cn/user/923245497557111
 
 qiufenghyf@163.com
 
@@ -81,8 +82,8 @@ qiufenghyf@163.com
 
 ## 项目
 
-### 实时聊天项目(webchat)Vue
-在线地址：https://www.qiufengh.com/（聊天室移动端，注册用户超过7000+，star将近1k）
+### 实时聊天项目(webchat)
+在线地址：[https://www.qiufengh.com/](https://www.qiufengh.com/)（聊天室移动端，注册用户超过7000+，star将近1k）
   
 负责前端构建,服务器架构,后端开发
   
@@ -115,11 +116,12 @@ qiufenghyf@163.com
 ### 数据库
 - MongoDB
 - Redis
+
 `
 
 const Editor: React.FC<Props> = (props) => {
   const { setViewHtml } = props;
-  const [content, setContent] = useState(defaultContent);
+  const [content] = useState(defaultContent);
 
   return (
     <CodeMirror

@@ -4,6 +4,7 @@ import "./utils/codemirror-github-light-theme.css";
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import "./themes/common.less"
 import "./themes/default.less"
 
 function App() {

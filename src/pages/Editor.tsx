@@ -157,7 +157,7 @@ const Editor: React.FC<Props> = (props) => {
       onChange={debounce((editor) => {
         const content = editor.getValue();
         setViewHtml(markdownParserResume.render(content))
-        console.log(markdownParserResume.render(content));
+        // console.log(markdownParserResume.render(content));
         if (!timerSave) {
           timerSave = window.setTimeout(() => {
             localStorage.setItem('md-resume', content);

@@ -8,12 +8,12 @@ const PickerColor = () => {
 
   return (
     <div className="rs-color-wrapper">
-      <div className="rs-color-btn" style={{background: color}} onClick={() => {setDisplayPicker(!displayPick)}}></div>
+      <div className="rs-color-btn" style={{ background: color }} onClick={() => { setDisplayPicker(!displayPick) }}></div>
       { displayPick && <ChromePicker color={color} onChangeComplete={(color) => {
         setColor(color.hex);
         document.body.style.setProperty('--bg', color.hex);
         // setDisplayPicker(false);
-      }}>123</ChromePicker>}
+      }}></ChromePicker>}
     </div>
   )
 }

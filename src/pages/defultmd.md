@@ -1,67 +1,39 @@
-import React, { useState } from "react";
-import CodeMirror from "@uiw/react-codemirror";
-import { markdownParserResume } from '@utils/helper';
-import debounce from 'lodash-es/debounce';
-
-interface Props {
-  setViewHtml: React.Dispatch<React.SetStateAction<string>>
-}
-
-type TimerSave = (number | null)
-
-let timerSave: TimerSave = null;
-
-const localContent = localStorage.getItem('md-resume');
-
-const defaultContent = localContent || `
-
 ::::: header
+:::: title
+::: left
 # 秋风
-
-对一切前沿知识保持充分的好奇。
-
+:::
+::: right
+# 前端工程师
+:::
+::::
 :::: block
-
+::: left
+对一切前沿知识保持充分的好奇。
 
 男/1995.12
 
-本科
+未知大学 信息与计算科学
+
+本科/2018年毕业/党员
+
+:::
+::: right
+https://qiufeng.blue
+
+https://github.com/hua1995116
+
+掘金 https://juejin.cn/user/923245497557111
 
 qiufenghyf@163.com
 
 178****8380
 
-https://github.com/hua1995116
-
+:::
 ::::
 :::::
 
-## 求职意向
-
-:::: block
-
-前端工程师
-
-北京市
-
-薪资面议
-
-1周内到岗
-
-::::
-
-## 教育背景
-
-:::: block
-
-### 未知大学
-
-### 信息与计算科学
-
-### 2014.9-2018.6
-
-
-::::
+## 介绍
 
 于2015年开始接触前端，喜欢编码，有Geek精神，对代码有洁癖，喜欢接触前沿技术，爱折腾。
 
@@ -69,19 +41,11 @@ https://github.com/hua1995116
   
 主持参与省、国家级项目4项；发表论文4篇，其中2篇EI索引。
 
+### 杭州兑吧网络有限公司 - 实习 （2018.3-2018.7）
 
-## 工作经验
+## 工作
 
-:::: block
-
-### 杭州兑吧网络有限公司
-
-### 前端架构组(实习）
-
-### 2018.3-2018.7
-
-::::
-
+前端架构组
 - 前端错误监控系统(基建)(负责人) 接入量pv:3000w
   - web端js-sdk开发,无侵入式接入,压缩后仅2kb。
   - 收集端Node开发,分布式存储日志。
@@ -99,7 +63,7 @@ https://github.com/hua1995116
 - webpack插件(webpack-plugin-inner-script)地址
   - 自动将外链形式改写成内敛形式。
 
-## 项目经验
+## 项目
 
 ### 实时聊天项目(webchat)
 在线地址：[https://www.qiufengh.com/](https://www.qiufengh.com/)（聊天室移动端，注册用户超过7000+，star将近1k）
@@ -135,50 +99,3 @@ https://github.com/hua1995116
 ### 数据库
 - MongoDB
 - Redis
-
-
-
-`
-
-const Editor: React.FC<Props> = (props) => {
-  const { setViewHtml } = props;
-  const [content] = useState(defaultContent);
-
-  return (
-    <CodeMirror
-      value={content}
-      options={{
-        theme: "github-light",
-        mode: "markdown",
-        lineWrapping: true,
-        lineNumbers: false,
-        extraKeys: {},
-      }}
-      onChange={debounce((editor) => {
-        const content = editor.getValue();
-        setViewHtml(markdownParserResume.render(content))
-        console.log(markdownParserResume.render(content));
-        if (!timerSave) {
-          timerSave = window.setTimeout(() => {
-            localStorage.setItem('md-resume', content);
-            if (timerSave) {
-              clearTimeout(timerSave);
-              timerSave = null;
-            }
-          }, 1 * 1000);
-        } else {
-          clearTimeout(timerSave);
-          timerSave = window.setTimeout(() => {
-            localStorage.setItem('md-resume', content);
-            if (timerSave) {
-              clearTimeout(timerSave);
-              timerSave = null;
-            }
-          }, 1 * 1000);
-        }
-      }, 300)}
-    ></CodeMirror>
-  );
-};
-
-export default React.memo(Editor);

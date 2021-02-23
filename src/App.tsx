@@ -5,7 +5,8 @@ import Home from "./pages/Home";
 import Main from "./pages/Main";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./themes/common.less"
-import "./themes/default.less"
+// import "./themes/default.less"
+import "./themes/blue.less"
 
 function App() {
   return (

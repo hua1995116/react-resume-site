@@ -7371,6 +7371,11 @@ markdown-it-container@^3.0.0:
   resolved "https://registry.npm.taobao.org/markdown-it-container/download/markdown-it-container-3.0.0.tgz#1d19b06040a020f9a827577bb7dbf67aa5de9a5b"
   integrity sha1-HRmwYECgIPmoJ1d7t9v2eqXemls=
 
+markdown-it-div@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/markdown-it-div/download/markdown-it-div-1.1.0.tgz#779c07a2313a36e59afd54c39907f9bc87c1ab20"
+  integrity sha1-d5wHojE6NuWa/VTDmQf5vIfBqyA=
+
 markdown-it@^12.0.4:
   version "12.0.4"
   resolved "https://registry.npm.taobao.org/markdown-it/download/markdown-it-12.0.4.tgz?cache=0&sync_timestamp=1608481232861&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmarkdown-it%2Fdownload%2Fmarkdown-it-12.0.4.tgz#eec8247d296327eac3ba9746bdeec9cfcc751e33"

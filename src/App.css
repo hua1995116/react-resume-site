@@ -7,3 +7,13 @@ html, body {
   width: 100%;
   height: 100%;
 }
+
+.rs-root {
+  width: 100%;
+  height: 100%;
+}
+
+.rs-body {
+  width: 100%;
+  height: calc(100% - 50px)
+}

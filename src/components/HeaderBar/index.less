@@ -1,0 +1,28 @@
+@barHeight: 30px;
+
+.rs-header-bar {
+  display: flex;
+  height: @barHeight;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 5%);
+  position: relative;
+  z-index: 2;
+  align-items: center;
+  .rs-logo {
+    margin-left: 20px;
+  }
+  a {
+    color: #333;
+    font-size: 14px;
+    padding: 0px 10px;
+    &:focus {
+      color: #333;
+      background: #e6f7ff;
+    }
+  }
+  .rs-link {
+    display: block;
+    height: @barHeight;
+    line-height: @barHeight;
+  }
+}

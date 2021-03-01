@@ -51,6 +51,7 @@
     "lodash-es": "^4.17.20",
     "markdown-it": "^12.0.4",
     "markdown-it-container": "^3.0.0",
+    "markdown-it-div": "^1.1.0",
     "mini-css-extract-plugin": "0.11.3",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
@@ -85,7 +86,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js && cp -r ./themes ./build",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

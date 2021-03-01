@@ -4,8 +4,11 @@
  * Licensed under MIT (https://github.com/primer/github-syntax-theme-generator/blob/master/LICENSE)
  */
 .cm-s-github-light.CodeMirror {
+  padding: 20px;
   background: #fff;
-  color: #24292e; }
+  font-size: 16px;
+  color: #24292e; 
+}
 
 .cm-s-github-light .CodeMirror-gutters {
   background: #fff;
@@ -42,7 +45,7 @@
 
 .cm-s-github-light .CodeMirror-lines {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 12px;
+  font-size: 14px;
   background: #fff;
   line-height: 1.5; }
 

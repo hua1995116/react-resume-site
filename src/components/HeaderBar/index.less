@@ -8,6 +8,15 @@
   position: relative;
   z-index: 2;
   align-items: center;
+  justify-content: space-between;
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  &&__right {
+    display: flex;
+    justify-content: flex-end;
+  }
   .rs-logo {
     margin-left: 20px;
   }
@@ -26,3 +35,60 @@
     line-height: @barHeight;
   }
 }
+
+
+.rs-feed-group {
+  background: #fff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 4px;
+  &__wechat {
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 33px;
+    .bg {
+      width: 114px;
+      height: 114px;
+      background-size: 92px 92px;
+      background-image: url(https://s3.qiufengh.com/muji/webchat-group.png);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 148px;
+        top: -3px;
+        background: hsla(0,0%,80%,.6);
+        right: -17px;
+      }
+    }
+  }
+  &__qq {
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .bg {
+      width: 114px;
+      height: 114px;
+      background-size: 92px 92px;
+      background-image: url(https://s3.qiufengh.com/muji/qq-group.png);
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+  }
+  &__text {
+    font-size: 12px;
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 20px;
+  }
+}
+

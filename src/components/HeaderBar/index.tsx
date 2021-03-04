@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Menu, Dropdown } from 'antd';
 import "./index.less";
 import { getTheme } from '@utils/changeThemes';
+import { getPdf } from '@src/service/htmlToPdf'
+
+// to get pdf url
+const toPdf = async () => {
+  let data = await getPdf('<div>秋风 - 前端工程师</div>')
+  console.log('data.url ====',data.url)
+}
 
 const HeaderBar = () => {
   const [template, setTemplate] = useState('default');

@@ -29,3 +29,11 @@ markdownParserResume
 
     })
     .use(MdContainer, 'title')
+
+export function downloadDirect(url: string, name: string) {
+    const aTag = document.createElement('a');
+    aTag.download = name;
+    aTag.target = '_blank';
+    aTag.href = url;
+    aTag.click()
+}

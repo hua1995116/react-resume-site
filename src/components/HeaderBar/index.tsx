@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Dropdown } from 'antd';
+import { Menu, Dropdown, message } from 'antd';
 import "./index.less";
 import { getTheme } from '@utils/changeThemes';
-import { markdownParserResume } from '@utils/helper';
+import { markdownParserResume, downloadDirect } from '@utils/helper';
+import { PdfParams, getPdf } from '@src/service/htmlToPdf';
+
+// to get pdf url
+// const toPdf = async () => {
+//   let data = await getPdf()
+//   console.log('data.url ====', data.url)
+// }
 
 const HeaderBar = () => {
   const [template, setTemplate] = useState('default');
@@ -52,14 +59,27 @@ const HeaderBar = () => {
     </Menu>
   )
 
-  const exportPdf = () => {
+  const exportPdf = async () => {
     const content = localStorage.getItem('md-resume');
     if (content) {
-      const body = markdownParserResume.render(content);
-      const styles = document.getElementById('rs-themes-data');
-      const backgroundColor = getComputedStyle(document.body).getPropertyValue("--bg");
+      const htmlContent = markdownParserResume.render(content);
+      const theme = template;
+      const themeColor = getComputedStyle(document.body).getPropertyValue("--bg");
+      try {
+        const hide = message.loading('正在为你生成简历...', 0);
+        let data = await getPdf({
+          htmlContent,
+          theme,
+          themeColor
+        })
+        downloadDirect(data.url, '木及简历.pdf');
+        hide();
+      } catch (e) {
+        message.error('生成简历出错，请稍再试!')
+      }
     }
   }
+  
 
   useEffect(() => {
     getTheme('default');

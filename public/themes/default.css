@@ -131,3 +131,33 @@
 .rs-view li ul li {
   list-style: decimal;
 }
+.rs-view a {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
+.rs-view a:hover {
+  color: #d1d0d0;
+}
+.rs-view a:active {
+  color: #d1d0d0;
+}
+.rs-view a:active,
+.rs-view a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+.rs-view a:focus {
+  text-decoration: none;
+  outline: 0;
+}
+.rs-view a[disabled] {
+  color: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -6,41 +6,44 @@ import { markdownParserResume, downloadDirect } from '@utils/helper';
 import { PdfParams, getPdf } from '@src/service/htmlToPdf';
 
 // to get pdf url
-// const toPdf = async () => {
-//   let data = await getPdf()
-//   console.log('data.url ====', data.url)
-// }
+const themes = [{
+  id: 'default',
+  defaultColor: '#39393a',
+  name: '默认'
+}, {
+  id: 'blue',
+  defaultColor: '#5974D4',
+  name: '极简蓝'
+}, {
+  id: 'orange',
+  defaultColor: '#39393a',
+  name: '朝阳黄'
+}]
 
 const HeaderBar = () => {
   const [template, setTemplate] = useState('default');
   const menu = (
     <Menu>
-      <Menu.Item>
-        <a rel="noopener noreferrer" onClick={async (e) => {
-          e.preventDefault()
-          if (template !== 'default') {
-            setTemplate('default');
-            await getTheme('default');
-            document.body.style.setProperty('--bg', '#39393a');
-          }
-        }}>
-          默认
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a rel="noopener noreferrer" onClick={async (e) => {
-          e.preventDefault()
-          if (template !== 'blue') {
-            setTemplate('blue');
-            await getTheme('blue');
-            document.body.style.setProperty('--bg', '#5974D4');
-          }
-        }}>
-          极简蓝
-        </a>
-      </Menu.Item>
+      {
+        themes.map(item => {
+          return (
+            <Menu.Item>
+              <a rel="noopener noreferrer" onClick={async (e) => {
+                e.preventDefault()
+                if (template !== item.id) {
+                  setTemplate(item.id);
+                  await getTheme(item.id);
+                  document.body.style.setProperty('--bg', item.defaultColor);
+                }
+              }}>
+                {item.name}
+              </a>
+            </Menu.Item>
+          )
+        })
+      }
     </Menu>
-  );
+  )
 
   const feedbackMenu = (
     <Menu>

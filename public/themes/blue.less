@@ -95,4 +95,34 @@
   li ul li {
     list-style: decimal;
   }
+  a {
+    color: #747474;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-text-decoration-skip: objects;
+  }
+  a:hover {
+    color: rgb(97, 97, 97);
+  }
+  a:active {
+    color:rgb(97, 97, 97);
+  }
+  a:active,
+  a:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  a:focus {
+    text-decoration: none;
+    outline: 0;
+  }
+  a[disabled] {
+    color: rgba(255, 255, 255, 0.25);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

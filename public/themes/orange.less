@@ -10,13 +10,16 @@
     display: flex;
   }
 
-  .h2_block, .h3_block, .h4_block, .h5_block {
+  .h2_block,
+  .h3_block,
+  .h4_block,
+  .h5_block {
     color: #000;
     background-color: #fff;
   }
 
   .block::before {
-    display:block;
+    display: block;
     content: "";
     height: 0;
     clear: both;
@@ -39,7 +42,7 @@
     margin-top: 0;
     color: #fff;
     position: relative;
-    background: linear-gradient(#f9855d 5%,#fdd288 20%,white);
+    background: linear-gradient(#f9855d 5%, #fdd288 20%, white);
   }
 
   .h1_block::before {
@@ -64,7 +67,7 @@
   }
 
   .right::after {
-    display:block;
+    display: block;
     content: "";
     height: 0;
     clear: both;
@@ -149,5 +152,35 @@
 
   li ul li {
     list-style: decimal;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-text-decoration-skip: objects;
+  }
+  a:hover {
+    color: rgb(209, 208, 208);
+  }
+  a:active {
+    color: rgb(209, 208, 208);
+  }
+  a:active,
+  a:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  a:focus {
+    text-decoration: none;
+    outline: 0;
+  }
+  a[disabled] {
+    color: rgba(255, 255, 255, 0.25);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }

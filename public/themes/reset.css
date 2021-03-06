@@ -247,7 +247,7 @@ sup {
   top: -0.5em;
 }
 a {
-  color: #1890ff;
+  color: #000;
   text-decoration: none;
   background-color: transparent;
   outline: none;
@@ -257,10 +257,10 @@ a {
   -webkit-text-decoration-skip: objects;
 }
 a:hover {
-  color: #40a9ff;
+  color: #333;
 }
 a:active {
-  color: #096dd9;
+  color: #333;
 }
 a:active,
 a:hover {

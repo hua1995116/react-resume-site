@@ -59,10 +59,29 @@ const HeaderBar = () => {
     </Menu>
   )
 
+  const filesMenu = (
+    <Menu>
+      <Menu.Item>
+        <a rel="noopener noreferrer" onClick={async (e) => {
+          e.preventDefault()
+        }}>
+          导入md
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a rel="noopener noreferrer" onClick={async (e) => {
+          e.preventDefault()
+        }}>
+          导出md
+        </a>
+      </Menu.Item>
+    </Menu>
+  )
+
   const exportPdf = async () => {
     const content = localStorage.getItem('md-resume');
     if (content) {
-      const htmlContent = markdownParserResume.render(content);
+      const htmlContent = markdownParserResume.render(content).replace(/(\n|\r)/g, '');
       const theme = template;
       const themeColor = getComputedStyle(document.body).getPropertyValue("--bg");
       try {
@@ -90,9 +109,11 @@ const HeaderBar = () => {
         <a className="rs-logo rs-link">
           ✍️ 木及简历
         </a>
-        <a href="#" className="rs-link">
-          文件
-        </a>
+        <Dropdown overlay={filesMenu} trigger={['click']}> 
+          <a className="ant-dropdown-link rs-link" onClick={e => e.preventDefault()}>
+            文件
+          </a>
+        </Dropdown>
         <Dropdown overlay={menu} trigger={['click']}> 
           <a className="ant-dropdown-link rs-link" onClick={e => e.preventDefault()}>
             选择模板
@@ -103,9 +124,6 @@ const HeaderBar = () => {
         </a>
       </div>
       <div className="rs-header-bar__right">
-        {/* <a className="rs-link">
-          交流与反馈
-        </a> */}
         <Dropdown overlay={feedbackMenu}> 
           <a className="ant-dropdown-link rs-link" onClick={e => e.preventDefault()}>
             交流与反馈

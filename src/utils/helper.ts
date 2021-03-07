@@ -1,10 +1,22 @@
 import MarkdownIt from "markdown-it";
 import MdContainer from 'markdown-it-container';
 import MdHContainer from './markdonw-it-h-container';
+import MdEmjio from 'markdown-it-emoji';
+import svgMap from './svgMap';
 
 export const markdownParserResume = new MarkdownIt();
 
 markdownParserResume
+    .use(MdEmjio, {
+        defs: svgMap,
+        shortcuts: {
+            "juejin": "icon:juejin",
+            "phone": "icon:phone",
+            "email": "icon:email",
+            "blog": "icon:blog",
+            "github": "icon:github",
+        }
+    })
     .use(MdHContainer)
     .use(MdContainer, 'header')
     .use(MdContainer, 'left', {

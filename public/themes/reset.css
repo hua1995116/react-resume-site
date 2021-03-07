@@ -431,3 +431,7 @@ mark {
   color: #fff;
   background: #1890ff;
 }
+.icon {
+  fill: #fff;
+  vertical-align: middle;
+}

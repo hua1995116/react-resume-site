@@ -84,6 +84,9 @@
 .rs-view li ul li {
   list-style: decimal;
 }
+.rs-view .icon {
+  fill: #747474;
+}
 .rs-view a {
   color: #747474;
   text-decoration: none;

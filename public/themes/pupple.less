@@ -4,22 +4,6 @@
   flex-direction: column;
   background: #fff;
   overflow-y: scroll;
-  -webkit-text-size-adjust: none;
-
-  h1 {
-    border-bottom: 1px solid #ddd;
-    color: #fff;
-  }
-
-  .h1_block {
-    margin-top: 0;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    font-size: 0;
-    -webkit-text-size-adjust: none;
-    background: var(--bg);
-  }
 
   .lr-container {
     padding: 20px 0;
@@ -31,7 +15,7 @@
   .h4_block,
   .h5_block {
     color: #000;
-    background: #fff;
+    background-color: #fff;
   }
 
   .block::before {
@@ -47,6 +31,29 @@
     margin-right: 50px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+  }
+
+  h1 {
+    border-bottom: 1px solid #ddd;
+    color: #fff;
+  }
+
+  .h1_block {
+    margin-top: 0;
+    color: #fff;
+    position: relative;
+    background: linear-gradient(#f9855d 5%, #fdd288 20%, white);
+  }
+
+  .h1_block::before {
+    content: "";
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background-color: #f9cb5d;
+    border-radius: 50%;
   }
 
   .left {
@@ -81,47 +88,33 @@
     margin: 0 50px;
   }
   .h2_block {
-    border: 0px;
-    margin-top: -1px;
+    position: relative;
     padding: 20px 0;
-  }
-
-  .h3_block {
-    padding: 10px 0;
   }
 
   h2 {
     position: relative;
     z-index: 1;
-    width: calc(100% - 120px - 30% * 2);
+    width: 10%;
     min-width: 100px;
-    margin: 0px auto;
+    margin: 0px 50px;
     padding: 4px 10px;
-    border-radius: 32px;
+    border-radius: 5px;
     font-size: 16px;
     font-weight: 700;
     text-align: center;
-    background-color: #eee;
+    color: #fff;
+    background-color: #fdd288;
   }
-
-  h2::after {
+  
+  .h2_block::before {
     content: "";
-    width: calc(100% + 10px);
+    width: calc(100% - 100px);
     position: absolute;
-    top: 50%;
-    height: 0;
-    left: 120%;
-    border-top: 1px solid #ededed;
-  }
-
-  h2::before {
-    content: "";
-    width: calc(100% + 10px);
-    position: absolute;
-    top: 50%;
-    height: 0;
-    left: -120%;
-    border-top: 1px solid #ededed;
+    top: 20px;
+    left: 50px;
+    height: 2px;
+    background-color: #fdd288;
   }
 
   h3 {
@@ -149,7 +142,6 @@
   li ul li {
     list-style: decimal;
   }
-
   a {
     color: #fff;
     text-decoration: none;
@@ -164,7 +156,7 @@
     color: rgb(209, 208, 208);
   }
   a:active {
-    color:rgb(209, 208, 208);
+    color: rgb(209, 208, 208);
   }
   a:active,
   a:hover {
@@ -179,8 +171,5 @@
     color: rgba(255, 255, 255, 0.25);
     cursor: not-allowed;
     pointer-events: none;
-  }
-  .icon {
-    fill: #fff;
   }
 }

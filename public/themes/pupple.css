@@ -1,0 +1,157 @@
+.rs-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow-y: scroll;
+}
+.rs-view .lr-container {
+  padding: 20px 0;
+  display: flex;
+}
+.rs-view .h2_block,
+.rs-view .h3_block,
+.rs-view .h4_block,
+.rs-view .h5_block {
+  color: #000;
+  background-color: #fff;
+}
+.rs-view .block::before {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+}
+.rs-view .title {
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.rs-view h1 {
+  border-bottom: 1px solid #ddd;
+  color: #fff;
+}
+.rs-view .h1_block {
+  margin-top: 0;
+  color: #fff;
+  position: relative;
+  background: linear-gradient(#f9855d 5%, #fdd288 20%, white);
+}
+.rs-view .h1_block::before {
+  content: "";
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  background-color: #f9cb5d;
+  border-radius: 50%;
+}
+.rs-view .left {
+  flex: 1;
+  text-align: left;
+}
+.rs-view .right {
+  flex: 1;
+  text-align: right;
+}
+.rs-view .right::after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+}
+.rs-view p {
+  margin-top: 8px;
+  margin-bottom: 0px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 14px;
+}
+.rs-view h1 {
+  font-size: 28px;
+  margin: 0;
+  padding: 30px 0;
+  margin: 0 50px;
+}
+.rs-view .h2_block {
+  position: relative;
+  padding: 20px 0;
+}
+.rs-view h2 {
+  position: relative;
+  z-index: 1;
+  width: 10%;
+  min-width: 100px;
+  margin: 0px 50px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background-color: #fdd288;
+}
+.rs-view .h2_block::before {
+  content: "";
+  width: calc(100% - 100px);
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  height: 2px;
+  background-color: #fdd288;
+}
+.rs-view h3 {
+  position: relative;
+  padding: 10px 0 5px;
+  line-height: 20px;
+  overflow: hidden;
+  font-weight: 500;
+  min-height: 30px;
+  font-size: 13px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.rs-view ul {
+  margin: 0 50px;
+}
+.rs-view li {
+  font-size: 13px;
+  margin-top: 8px;
+  list-style: square inside;
+}
+.rs-view li ul li {
+  list-style: decimal;
+}
+.rs-view a {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
+.rs-view a:hover {
+  color: #d1d0d0;
+}
+.rs-view a:active {
+  color: #d1d0d0;
+}
+.rs-view a:active,
+.rs-view a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+.rs-view a:focus {
+  text-decoration: none;
+  outline: 0;
+}
+.rs-view a[disabled] {
+  color: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+  pointer-events: none;
+}

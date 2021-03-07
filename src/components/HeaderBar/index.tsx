@@ -27,7 +27,7 @@ const HeaderBar = () => {
       {
         themes.map(item => {
           return (
-            <Menu.Item>
+            <Menu.Item key={item.id}>
               <a rel="noopener noreferrer" onClick={async (e) => {
                 e.preventDefault()
                 if (template !== item.id) {
@@ -87,8 +87,9 @@ const HeaderBar = () => {
       const htmlContent = markdownParserResume.render(content).replace(/(\n|\r)/g, '');
       const theme = template;
       const themeColor = getComputedStyle(document.body).getPropertyValue("--bg");
+      let hide;
       try {
-        const hide = message.loading('正在为你生成简历...', 0);
+        hide = message.loading('正在为你生成简历...', 0);
         let data = await getPdf({
           htmlContent,
           theme,
@@ -97,6 +98,7 @@ const HeaderBar = () => {
         downloadDirect(data.url, '木及简历.pdf');
         hide();
       } catch (e) {
+        hide && hide();
         message.error('生成简历出错，请稍再试!')
       }
     }

@@ -18,6 +18,10 @@ const themes = [{
   id: 'orange',
   defaultColor: '#39393a',
   name: '朝阳黄'
+}, {
+  id: 'pupple',
+  defaultColor: '#36448f',
+  name: '科技紫'
 }]
 
 const HeaderBar = () => {

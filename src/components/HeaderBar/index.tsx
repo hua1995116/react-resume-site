@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Dropdown, message } from 'antd';
+import { Menu, Dropdown, message, Modal } from 'antd';
+
 import "./index.less";
 import { getTheme } from '@utils/changeThemes';
 import { markdownParserResume, downloadDirect } from '@utils/helper';
@@ -9,40 +10,65 @@ import { PdfParams, getPdf } from '@src/service/htmlToPdf';
 const themes = [{
   id: 'default',
   defaultColor: '#39393a',
-  name: '默认'
+  name: '默认',
+  src:'https://s3.qiufengh.com/muji/WechatIMG2702.png'
 }, {
   id: 'blue',
   defaultColor: '#5974D4',
-  name: '极简蓝'
+  name: '极简蓝',
+  src:'https://s3.qiufengh.com/muji/WechatIMG2703.png'
 }, {
   id: 'orange',
   defaultColor: '#39393a',
-  name: '朝阳黄'
-}]
+  name: '朝阳黄',
+  src:'https://s3.qiufengh.com/muji/WechatIMG2704.png'
+},{
+  id: 'puple',
+  defaultColor: '#5974D4',
+  name: '宝石紫',
+  src:'https://s3.qiufengh.com/muji/WechatIMG2703.png'
+},]
 
 const HeaderBar = () => {
   const [template, setTemplate] = useState('default');
-  const menu = (
-    <Menu>
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = async() => {
+    await getTheme(template);
+    themes.map(item => {
+      if(template === item.id) {
+        document.body.style.setProperty('--bg', item.defaultColor);
+      }
+    })
+    setIsModalVisible(false);
+    
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const templateContent = (
+    <div className="template-wrapper">
       {
         themes.map(item => {
           return (
-            <Menu.Item key={item.id}>
-              <a rel="noopener noreferrer" onClick={async (e) => {
-                e.preventDefault()
-                if (template !== item.id) {
-                  setTemplate(item.id);
-                  await getTheme(item.id);
-                  document.body.style.setProperty('--bg', item.defaultColor);
-                }
-              }}>
-                {item.name}
-              </a>
-            </Menu.Item>
+            <div className={`template ${item.id === template? 'active': ''}`}  key={item.id} onClick={(e) => {
+              e.preventDefault()
+              if (template !== item.id) {
+                setTemplate(item.id);
+              }
+            }}>
+              <img className="template-img" src={item.src}></img>
+            </div>
           )
         })
       }
-    </Menu>
+    </div>
   )
 
   const feedbackMenu = (
@@ -119,11 +145,9 @@ const HeaderBar = () => {
             文件
           </a>
         </Dropdown>
-        <Dropdown overlay={menu} trigger={['click']}> 
-          <a className="ant-dropdown-link rs-link" onClick={e => e.preventDefault()}>
+          <a className="ant-dropdown-link rs-link" onClick={showModal}>
             选择模板
           </a>
-        </Dropdown>
         <a href="#" className="rs-link" onClick={ exportPdf }>
           导出 pdf
         </a>
@@ -135,6 +159,9 @@ const HeaderBar = () => {
           </a>
         </Dropdown>
       </div>
+      <Modal title="请选择模板" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelText="取消" okText="确定" width={600}>
+        {templateContent}
+      </Modal>
     </div>
   )
 }

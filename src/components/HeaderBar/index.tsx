@@ -10,12 +10,12 @@ import { PdfParams, getPdf } from '@src/service/htmlToPdf';
 const themes = [{
   id: 'default',
   defaultColor: '#39393a',
-  name: '默认',
+  name: '默认（秋风同款）',
   src:'https://s3.qiufengh.com/muji/WechatIMG2702.png'
 }, {
   id: 'blue',
   defaultColor: '#5974D4',
-  name: '极简蓝',
+  name: '极简色',
   src:'https://s3.qiufengh.com/muji/WechatIMG2703.png'
 }, {
   id: 'orange',
@@ -25,8 +25,8 @@ const themes = [{
 },{
   id: 'pupple',
   defaultColor: '#36448f',
-  name: '科技紫',
-  src:'https://s3.qiufengh.com/muji/WechatIMG2703.png'
+  name: '全彩风',
+  src:'https://s3.qiufengh.com/muji/WechatIMG2705.jpg'
 },]
 const HeaderBar = () => {
   const [template, setTemplate] = useState('default');
@@ -63,6 +63,7 @@ const HeaderBar = () => {
               }
             }}>
               <img className="template-img" src={item.src}></img>
+              <p className="template-title">{item.name}</p>
             </div>
           )
         })
@@ -158,7 +159,7 @@ const HeaderBar = () => {
           </a>
         </Dropdown>
       </div>
-      <Modal title="请选择模板" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelText="取消" okText="确定" width={600}>
+      <Modal title="请选择模板" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelText="取消" okText="确定" width={1100}>
         {templateContent}
       </Modal>
     </div>

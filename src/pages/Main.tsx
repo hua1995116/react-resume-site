@@ -9,7 +9,7 @@ const Main = () => {
   const [viewHtml, setViewHtml] = useState<string>('');
   return (
     <div className="rs-container">
-      <SplitPane split="vertical" minSize={400}>
+      <SplitPane split="vertical" minSize={450}>
         <Editor setViewHtml={setViewHtml}></Editor>
         <View viewHtml={viewHtml}></View>
       </SplitPane>

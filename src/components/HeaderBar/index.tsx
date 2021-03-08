@@ -23,12 +23,11 @@ const themes = [{
   name: '朝阳黄',
   src:'https://s3.qiufengh.com/muji/WechatIMG2704.png'
 },{
-  id: 'puple',
-  defaultColor: '#5974D4',
-  name: '宝石紫',
+  id: 'pupple',
+  defaultColor: '#36448f',
+  name: '科技紫',
   src:'https://s3.qiufengh.com/muji/WechatIMG2703.png'
 },]
-
 const HeaderBar = () => {
   const [template, setTemplate] = useState('default');
   const [isModalVisible, setIsModalVisible] = useState(false);

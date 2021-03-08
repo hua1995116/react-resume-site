@@ -1,3 +1,4 @@
+
 .rs-view {
   width: 100%;
   display: flex;
@@ -5,12 +6,13 @@
   background: #fff;
   overflow-y: scroll;
   position: relative;
+  border: 2px solid #fdefef;
+  -webkit-text-size-adjust: none;
 
   &::before {
-    background-image: url(https://s3.qiufengh.com/muji/pen-style.svg);
     width: 300px;
     height: 300px;
-    content: "";
+    content: url(https://s3.qiufengh.com/muji/pen-style.svg);
     position: absolute;
     right: 0;
     z-index: 1;
@@ -18,10 +20,9 @@
   }
 
   &::after {
-    background-image: url(https://s3.qiufengh.com/muji/pen-style.svg);
     width: 200px;
     height: 200px;
-    content: "";
+    content: url(https://s3.qiufengh.com/muji/pen-style.svg);;
     position: absolute;
     left: -47px;
     bottom: 43px;
@@ -61,7 +62,7 @@
     margin-top: 0;
     color: #fff;
     position: relative;
-    background: var(--bg);;
+    background: var(--bg);
   }
 
   .left {

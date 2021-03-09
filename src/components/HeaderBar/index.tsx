@@ -5,6 +5,7 @@ import "./index.less";
 import { getTheme } from '@utils/changeThemes';
 import { markdownParserResume, downloadDirect } from '@utils/helper';
 import { PdfParams, getPdf } from '@src/service/htmlToPdf';
+import { useStores } from '@src/store';
 
 // to get pdf url
 const themes = [{
@@ -29,6 +30,7 @@ const themes = [{
   src:'https://s3.qiufengh.com/muji/WechatIMG2705.jpg'
 },]
 const HeaderBar = () => {
+  const { templateStore } = useStores();
   const [template, setTemplate] = useState('default');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -39,7 +41,8 @@ const HeaderBar = () => {
   const handleOk = async() => {
     await getTheme(template);
     themes.map(item => {
-      if(template === item.id) {
+      if (template === item.id) {
+        templateStore.setColor(item.defaultColor);
         document.body.style.setProperty('--bg', item.defaultColor);
       }
     })

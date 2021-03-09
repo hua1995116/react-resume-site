@@ -5,7 +5,7 @@
   background: #fff;
   overflow-y: scroll;
   position: relative;
-  border: 2px solid #fdefef;
+  z-index: 2;
   -webkit-text-size-adjust: none;
 }
 .rs-view::before {

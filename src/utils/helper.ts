@@ -49,3 +49,18 @@ export function downloadDirect(url: string, name: string) {
     aTag.href = url;
     aTag.click()
 }
+
+export function copyText(value: string, callback?: any) {
+    const input = document.createElement('input');
+    input.setAttribute('readonly', 'readonly');
+    input.value = value;
+    document.body.appendChild(input);
+    input.select();
+    input.setSelectionRange(0, 9999);
+    if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        callback && callback();
+    }
+    document.body.removeChild(input);
+}
+

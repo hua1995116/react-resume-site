@@ -12,8 +12,27 @@
   }
 }
 
-.rs-shortcuts-item {
-  .icon {
-    fill: black;
+.ant-modal-body {
+  .rs-shortcuts-item {
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px 10px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .icon {
+      fill: black;
+      width: 40px;
+      height: 40px;
+    }
+    &__icon {
+      text-align: center;
+    }
+    &__text {
+
+    }
+  }
+  p {
+    margin-bottom: 0;
   }
 }

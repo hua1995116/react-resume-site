@@ -10,6 +10,7 @@ export interface PdfParams {
     htmlContent: string
     theme: string
     themeColor: string
+    isMark: boolean
 }
 
 export async function getPdf(params: PdfParams) {

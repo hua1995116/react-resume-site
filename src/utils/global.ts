@@ -8,7 +8,7 @@ export const INIT_CONTENT = `
 
 男/1995.12
 
-未知大学 信息与计算科学
+浙江科技学院/信息与计算科学
 
 本科/2018年毕业/党员
 
@@ -60,7 +60,7 @@ qiufenghyf@163.com
 ## 项目
 
 ### 实时聊天项目(webchat)
-在线地址：[https://www.qiufengh.com/](https://www.qiufengh.com/)（聊天室移动端，注册用户超过7000+，star将近1k）
+Github地址：[https://github.com/hua1995116/webchat](https://github.com/hua1995116/webchat)（聊天室移动端，注册用户超过7000+，star将近1k）
   
 负责前端构建,服务器架构,后端开发
   
@@ -70,8 +70,6 @@ qiufenghyf@163.com
 - 开发Loading，Alert，Confirm等组件
 - 拥有日志系统以及消息的RSA算法加密
 - 基于redis的请求监控，过滤恶意请求
-
-
 
 ## 技能
 ### Web基础

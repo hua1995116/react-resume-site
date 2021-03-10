@@ -1,3 +1,6 @@
+* {
+  font-family: 'pingfang-sc';
+}
 .rs-view {
   width: 100%;
   display: flex;
@@ -29,6 +32,12 @@
 .rs-view .h5_block {
   color: #000;
   background: #fff;
+}
+.rs-view .h2_block a,
+.rs-view .h3_block a,
+.rs-view .h4_block a,
+.rs-view .h5_block a {
+  color: #000;
 }
 .rs-view .block::before {
   display: block;
@@ -71,6 +80,7 @@
   margin: 0 50px;
 }
 .rs-view .h2_block {
+  position: relative;
   border: 0px;
   margin-top: -1px;
   padding: 20px 0;
@@ -160,4 +170,17 @@
   color: rgba(255, 255, 255, 0.25);
   cursor: not-allowed;
   pointer-events: none;
+}
+.rs-view .icon {
+  fill: #fff;
+}
+.rs-view code {
+  font-size: 14px;
+  word-wrap: break-word;
+  padding: 3px 6px;
+  color: #333;
+  border-radius: 4px;
+  margin: 0 2px;
+  background-color: rgba(27, 31, 35, 0.05);
+  word-break: break-all;
 }

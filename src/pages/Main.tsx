@@ -4,6 +4,7 @@ import Editor from './Editor';
 import View from './View';
 import './Main.less';
 import ColorPicker from './ColorPicker';
+import Shortcuts from '@src/components/Shortcuts';
 
 const Main = () => {
   const [viewHtml, setViewHtml] = useState<string>('');
@@ -14,6 +15,7 @@ const Main = () => {
         <View viewHtml={viewHtml}></View>
       </SplitPane>
       <ColorPicker></ColorPicker>
+      <Shortcuts></Shortcuts>
     </div>
   );
 };

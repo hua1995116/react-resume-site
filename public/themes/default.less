@@ -1,3 +1,6 @@
+* {
+  font-family: 'pingfang-sc';
+}
 .rs-view {
   width: 100%;
   display: flex;
@@ -32,6 +35,13 @@
   .h5_block {
     color: #000;
     background: #fff;
+  }
+
+  .h2_block a,
+  .h3_block a,
+  .h4_block a,
+  .h5_block a {
+    color: #000;
   }
 
   .block::before {
@@ -81,10 +91,18 @@
     margin: 0 50px;
   }
   .h2_block {
+    position: relative;
     border: 0px;
     margin-top: -1px;
     padding: 20px 0;
   }
+  // .h2_block::before {
+  //   position: absolute;
+  //   height: 1px;
+  //   top: -1px;
+  //   width: 100%;
+  //   background-color: #fff;
+  // }
 
   .h3_block {
     padding: 10px 0;
@@ -182,5 +200,15 @@
   }
   .icon {
     fill: #fff;
+  }
+  code {
+    font-size: 14px;
+    word-wrap: break-word;
+    padding: 3px 6px;
+    color: #333;
+    border-radius: 4px;
+    margin: 0 2px;
+    background-color: rgba(27,31,35,.05);
+    word-break: break-all;
   }
 }

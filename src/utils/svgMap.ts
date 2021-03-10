@@ -97,4 +97,8 @@ const svg = {
     `
 }
 
+type Svg = typeof svg;
+
+export type SvgType  = keyof Svg;
+
 export default svg;

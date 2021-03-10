@@ -91,7 +91,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "watch:themes": "gulp watch"
   },
   "eslintConfig": {
     "extends": [
@@ -175,7 +176,9 @@
     "@types/markdown-it-emoji": "^2.0.0",
     "@types/react-color": "^3.0.4",
     "babel-plugin-import": "^1.13.3",
-    "less": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-less": "^4.0.1",
+    "less": "^3.13.1",
     "less-loader": "5.0.0"
   }
 }

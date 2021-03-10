@@ -1,5 +1,5 @@
 * {
-  font-family: 'pingfang-sc';
+  font-family: 'pingfang-sc' !important;
 }
 .rs-view {
   width: 100%;
@@ -35,6 +35,7 @@
 .rs-view h1 {
   border-bottom: 1px solid #ddd;
   color: #fff;
+  font-weight: 800;
 }
 .rs-view .h1_block {
   margin-top: 0;

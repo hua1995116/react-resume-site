@@ -1,5 +1,5 @@
 * {
-  font-family: 'pingfang-sc';
+  font-family: 'pingfang-sc' !important;
 }
 .rs-view {
   width: 100%;
@@ -60,7 +60,7 @@
 .rs-view h1 {
   font-size: 30px;
   margin-bottom: 12px;
-  font-weight: 600;
+  font-weight: 800;
 }
 .rs-view h2 {
   position: relative;

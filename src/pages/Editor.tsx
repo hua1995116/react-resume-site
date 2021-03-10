@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { markdownParserResume } from '@utils/helper';
 import debounce from 'lodash-es/debounce';
-import { INIT_CONTENT } from '@src/utils/global';
+import { useStores } from '@src/store';
+import { observer } from "mobx-react"
 
 interface Props {
   setViewHtml: React.Dispatch<React.SetStateAction<string>>
@@ -12,17 +13,14 @@ type TimerSave = (number | null)
 
 let timerSave: TimerSave = null;
 
-const localContent = localStorage.getItem('md-resume');
-
-const defaultContent = localContent || INIT_CONTENT;
 
 const Editor: React.FC<Props> = (props) => {
+  const { templateStore } = useStores();
   const { setViewHtml } = props;
-  const [content] = useState(defaultContent);
 
-  return (
+  const MdEditor = observer(({templateStore}:any) => (
     <CodeMirror
-      value={content}
+      value={ templateStore.mdContent }
       options={{
         theme: "github-light",
         mode: "markdown",
@@ -35,6 +33,7 @@ const Editor: React.FC<Props> = (props) => {
         setViewHtml(markdownParserResume.render(content))
         if (!timerSave) {
           timerSave = window.setTimeout(() => {
+            templateStore.setMdContent(content)
             localStorage.setItem('md-resume', content);
             if (timerSave) {
               clearTimeout(timerSave);
@@ -44,6 +43,7 @@ const Editor: React.FC<Props> = (props) => {
         } else {
           clearTimeout(timerSave);
           timerSave = window.setTimeout(() => {
+            templateStore.setMdContent(content)
             localStorage.setItem('md-resume', content);
             if (timerSave) {
               clearTimeout(timerSave);
@@ -53,6 +53,10 @@ const Editor: React.FC<Props> = (props) => {
         }
       }, 300)}
     ></CodeMirror>
+  ))
+
+  return (
+    <MdEditor templateStore={templateStore}></MdEditor>
   );
 };
 

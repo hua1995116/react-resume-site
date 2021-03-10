@@ -7,7 +7,6 @@ import { markdownParserResume, downloadDirect } from '@utils/helper';
 import { PdfParams, getPdf } from '@src/service/htmlToPdf';
 import { useStores } from '@src/store';
 
-// to get pdf url
 const themes = [{
   id: 'default',
   defaultColor: '#39393a',
@@ -28,7 +27,8 @@ const themes = [{
   defaultColor: '#36448f',
   name: '全彩风',
   src:'https://s3.qiufengh.com/muji/WechatIMG2705.jpg'
-},]
+}]
+
 const HeaderBar = () => {
   const { templateStore } = useStores();
   const [template, setTemplate] = useState('default');
@@ -53,6 +53,24 @@ const HeaderBar = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  const uploadMdFile = (e:any) => {
+    let resultFile = e.target.files[0]
+    var reader = new FileReader();                
+    reader.readAsText(resultFile);
+    reader.onload = (e => {
+      if(e.target?.result) {
+        templateStore.setMdContent(e.target.result+'')
+      }
+    })
+  }
+
+  const exportMdFile = () => {
+    const file = new Blob([templateStore.mdContent]);
+    const url = URL.createObjectURL(file)
+    downloadDirect(url,'木及简历.md')
+  }
+
 
   const templateContent = (
     <div className="template-wrapper">
@@ -94,16 +112,13 @@ const HeaderBar = () => {
   const filesMenu = (
     <Menu>
       <Menu.Item>
-        <a rel="noopener noreferrer" onClick={async (e) => {
-          e.preventDefault()
-        }}>
-          导入md
-        </a>
+        <label htmlFor="uploadMdFile">
+          <a rel="noopener noreferrer">导入md</a>
+          <input type="file" id="uploadMdFile" accept=".md" className="uploadMd" onChange={uploadMdFile}></input>
+        </label>
       </Menu.Item>
       <Menu.Item>
-        <a rel="noopener noreferrer" onClick={async (e) => {
-          e.preventDefault()
-        }}>
+        <a rel="noopener noreferrer" onClick={ exportMdFile }>
           导出md
         </a>
       </Menu.Item>

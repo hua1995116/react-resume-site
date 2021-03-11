@@ -4,7 +4,7 @@ import { INIT_CONTENT } from '@src/utils/global';
 
 const localContent = localStorage.getItem('md-resume');
 
-class templateStore {
+class TemplateStore {
 	color = INIT_COLOR;
 	mdContent = localContent || INIT_CONTENT;
 
@@ -21,4 +21,4 @@ class templateStore {
 	}
 }
 
-export default templateStore;
+export default TemplateStore;

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { markdownParserResume } from "@utils/helper";
 import debounce from "lodash-es/debounce";
 import { useStores } from "@src/store";
+import { setMdEditorRef } from "@src/utils/global";
 
 interface Props {
   setViewHtml: React.Dispatch<React.SetStateAction<string>>;
@@ -14,10 +15,17 @@ let timerSave: TimerSave = null;
 
 const Editor: React.FC<Props> = (props) => {
   const { templateStore } = useStores();
+  const editorRef = useRef<CodeMirror>(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setMdEditorRef(editorRef.current?.editor);
+    })
+  }, []);
   const { setViewHtml } = props;
 
   return (
     <CodeMirror
+      ref={editorRef}
       value={templateStore.mdContent}
       options={{
         theme: "github-light",
@@ -26,7 +34,7 @@ const Editor: React.FC<Props> = (props) => {
         lineNumbers: false,
         extraKeys: {},
       }}
-      onChange={debounce((editor) => {
+      onChange={debounce((editor: any) => {
         const content = editor.getValue();
         setViewHtml(markdownParserResume.render(content));
         if (!timerSave) {

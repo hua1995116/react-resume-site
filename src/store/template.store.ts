@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { INIT_COLOR } from '@src/utils/global'
-import { INIT_CONTENT } from '@src/utils/global';
+import { INIT_COLOR } from '@utils/const'
+import { INIT_CONTENT } from '@utils/const';
 
 const localContent = localStorage.getItem('md-resume');
 

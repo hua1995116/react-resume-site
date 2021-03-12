@@ -1,11 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, Dropdown, message, Modal, Form, Switch, Input, FormInstance } from "antd";
+import {
+  Menu,
+  Dropdown,
+  message,
+  Modal,
+  Form,
+  Switch,
+  Input,
+  FormInstance,
+} from "antd";
 
 import "./index.less";
 import { getTheme } from "@utils/changeThemes";
 import { markdownParserResume, downloadDirect } from "@utils/helper";
 import { PdfParams, getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
+import { mdEditorRef } from "@src/utils/global";
 
 const themes = [
   {
@@ -66,7 +76,7 @@ const HeaderBar = () => {
     reader.readAsText(resultFile);
     reader.onload = (e) => {
       if (e.target?.result) {
-        templateStore.setMdContent(e.target.result + "");
+          mdEditorRef && (mdEditorRef.setValue(e.target.result));
       }
     };
   };
@@ -144,8 +154,8 @@ const HeaderBar = () => {
   };
 
   const handleSubmit = (values: any) => {
-    exportPdf(values)
-  }
+    exportPdf(values);
+  };
 
   const exportPdf = async ({
     name,
@@ -172,7 +182,7 @@ const HeaderBar = () => {
           themeColor,
           isMark,
         });
-        downloadDirect(data.url, `${name}.pdf` || '木及简历.pdf');
+        downloadDirect(data.url, `${name}.pdf` || "木及简历.pdf");
         hide();
       } catch (e) {
         hide && hide();
@@ -199,9 +209,13 @@ const HeaderBar = () => {
         <a className="ant-dropdown-link rs-link" onClick={showModal}>
           选择模板
         </a>
-        <a href="#" className="rs-link" onClick={() => {
-          setIsExportVisible(true);
-        }}>
+        <a
+          href="#"
+          className="rs-link"
+          onClick={() => {
+            setIsExportVisible(true);
+          }}
+        >
           导出 pdf
         </a>
       </div>
@@ -226,34 +240,36 @@ const HeaderBar = () => {
       >
         {templateContent}
       </Modal>
-      {isExportVisible && <Modal
-        title="导出确认"
-        visible={isExportVisible}
-        onOk={handleExport}
-        onCancel={() => {
-          setIsExportVisible(false);
-        }}
-        cancelText="取消"
-        okText="确认"
-      >
-        <Form
-          ref={formRef}
-          labelCol={{ span: 4 }}
-          wrapperCol={{ span: 14 }}
-          layout="horizontal"
-          initialValues={{
-            isMark: true,
+      {isExportVisible && (
+        <Modal
+          title="导出确认"
+          visible={isExportVisible}
+          onOk={handleExport}
+          onCancel={() => {
+            setIsExportVisible(false);
           }}
-          onFinish={handleSubmit}
+          cancelText="取消"
+          okText="确认"
         >
-          <Form.Item name="name" label="简历名称">
-            <Input placeholder="不填则系统命名" />
-          </Form.Item>
-          <Form.Item name="isMark" label="是否页尾" valuePropName="checked">
-            <Switch />
-          </Form.Item>
-        </Form>
-      </Modal>}
+          <Form
+            ref={formRef}
+            labelCol={{ span: 4 }}
+            wrapperCol={{ span: 14 }}
+            layout="horizontal"
+            initialValues={{
+              isMark: true,
+            }}
+            onFinish={handleSubmit}
+          >
+            <Form.Item name="name" label="简历名称">
+              <Input placeholder="不填则系统命名" />
+            </Form.Item>
+            <Form.Item name="isMark" label="是否页尾" valuePropName="checked">
+              <Switch />
+            </Form.Item>
+          </Form>
+        </Modal>
+      )}
     </div>
   );
 };

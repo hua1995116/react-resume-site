@@ -1,6 +1,9 @@
 * {
   font-family: 'pingfang-sc' !important;
 }
+.rs-view img {
+  max-width: 400px;
+}
 .rs-view {
   width: 100%;
   background: #fff;

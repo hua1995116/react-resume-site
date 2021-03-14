@@ -1,6 +1,9 @@
 * {
   font-family: 'pingfang-sc' !important;
 }
+.rs-view img {
+  max-width: 400px;
+}
 .rs-view {
   width: 100%;
   display: flex;
@@ -43,18 +46,8 @@
   position: relative;
   background: linear-gradient(#f9855d 5%, #fdd288 20%, white);
 }
-.rs-view .h1_block p:last-of-type {
-  padding-bottom: 20px;
-}
-.rs-view .h1_block::before {
-  content: "";
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  background-color: #f9cb5d;
-  border-radius: 50%;
+.rs-view .h1_block .h2_block:nth-of-type(1) {
+  margin-top: 20px;
 }
 .rs-view .left {
   flex: 1;
@@ -80,7 +73,7 @@
 .rs-view h1 {
   font-size: 28px;
   margin: 0;
-  padding: 30px 0;
+  padding: 20px 0;
   margin: 0 50px;
 }
 .rs-view .h2_block {

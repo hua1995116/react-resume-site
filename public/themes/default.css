@@ -1,6 +1,9 @@
 * {
   font-family: 'pingfang-sc' !important;
 }
+.rs-view img {
+  max-width: 400px;
+}
 .rs-view {
   width: 100%;
   display: flex;
@@ -25,11 +28,11 @@
 .rs-view .h1_block a {
   color: #fff;
 }
-.rs-view .h1_block p:last-of-type {
-  padding-bottom: 20px;
+.rs-view .h1_block .h2_block:nth-of-type(1) {
+  margin-top: 20px;
 }
 .rs-view .lr-container {
-  padding: 20px 0;
+  padding: 10px 0 20px;
   display: flex;
 }
 .rs-view .h2_block,
@@ -82,7 +85,7 @@
 .rs-view h1 {
   font-size: 28px;
   margin: 0;
-  padding: 30px 0;
+  padding: 20px 0;
   margin: 0 50px;
   font-weight: 800;
 }
@@ -90,7 +93,7 @@
   position: relative;
   border: 0px;
   margin-top: -1px;
-  padding: 20px 0;
+  padding: 20px 0 10px;
 }
 .rs-view .h3_block {
   padding: 10px 0;

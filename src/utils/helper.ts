@@ -5,7 +5,9 @@ import MdEmjio from 'markdown-it-emoji';
 import svgMap from './svgMap';
 import axios from 'axios';
 
-export const markdownParserResume = new MarkdownIt();
+export const markdownParserResume = new MarkdownIt({
+    html: true
+});
 
 markdownParserResume
     .use(MdEmjio, {

@@ -3,7 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import { markdownParserResume } from "@utils/helper";
 import debounce from "lodash-es/debounce";
 import { useStores } from "@src/store";
-import { setMdEditorRef, globalEditorCountIncrease } from "@src/utils/global";
+import { setMdEditorRef, globalEditorCountIncrease, globalEditorCount } from "@src/utils/global";
 
 interface Props {
   setViewHtml: React.Dispatch<React.SetStateAction<string>>;
@@ -36,8 +36,12 @@ const Editor: React.FC<Props> = (props) => {
         extraKeys: {},
       }}
       onChange={debounce((editor: any) => {
-        console.log('=====');
-        globalEditorCountIncrease();
+        console.log(globalEditorCount, 'globalEditorCount==');
+        if (globalEditorCount >= 2) {
+          localStorage.setItem('md-count', '999');
+        } else if (globalEditorCount === 1 || globalEditorCount === 0) {
+          globalEditorCountIncrease();
+        }
         const content = editor.getValue();
         setViewHtml(markdownParserResume.render(content));
         if (!timerSave) {

@@ -178,7 +178,7 @@ const HeaderBar = () => {
         try {
           hide();
           const curThemes = themes.filter(item => item.id === theme);
-          await downloadFetch(curThemes[0].defaultUrl, `${name}.pdf` || "木及简历.pdf");
+          await downloadFetch(curThemes[0].defaultUrl, name ? `${name}.pdf` : "木及简历.pdf");
         } catch (e) {
           hide();
         }
@@ -194,7 +194,7 @@ const HeaderBar = () => {
           themeColor,
           isMark,
         });
-        await downloadFetch(data.url, `${name}.pdf` || "木及简历.pdf");
+        await downloadFetch(data.url, name ? `${name}.pdf` : "木及简历.pdf");
         hide();
         message.success("恭喜你，导出成功!")
       } catch (e) {

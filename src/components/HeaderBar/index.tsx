@@ -219,7 +219,9 @@ const HeaderBar = () => {
         >
           导出 pdf
         </a>
-        <a className="ant-dropdown-link rs-link" onClick={() => {}}>
+        <a className="ant-dropdown-link rs-link" onClick={() => {
+          setIsUsageVisible(true);
+        }}>
           使用教程
         </a>
       </div>

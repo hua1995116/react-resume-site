@@ -50,7 +50,7 @@ const themes = [
     defaultColor: "#36448f",
     name: "全彩风",
     src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
-    isColor: false,
+    isColor: true,
     defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
   },
 ];

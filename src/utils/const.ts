@@ -127,7 +127,7 @@ Github地址：[https://github.com/hua1995116/webchat](https://github.com/hua199
 `;
 
 export const TUTORIALS_GUIDE = `
-## 标题层级该怎么写？
+## 1.标题层级该怎么写？
 
 木及简历可以写出很多漂亮的主题简历，但是同时我们也 Markdown 扩展了一些额外的解析规则，因此也会对写法有一定的规范。
 
@@ -155,7 +155,7 @@ export const TUTORIALS_GUIDE = `
 
 
 
-## 如何写左右结构？
+## 2.如何写左右结构？
 由于在 Markdown 中直接写左右结构比较困难，因此我们扩展了 Markdown 的基础语法。这个抒写语法，对于 Markdown 重度使用者也不是什么高级的语法， VuePress、React官网等各大社区网站中都有用到。
 
 示例:
@@ -163,7 +163,7 @@ export const TUTORIALS_GUIDE = `
 ![WechatIMG30782](https://s3.qiufengh.com/blog/WechatIMG30782.png)
 
 
-## 换主题颜色？
+## 3.换主题颜色？
 
 在部分模板中，你可以通过更换自己所喜欢的主题色。
 
@@ -177,7 +177,7 @@ export const TUTORIALS_GUIDE = `
 
 
 
-## 客服咨询
+## 4.客服咨询
 
 你在使用中有任何问题，可以添加技术客服微信（qiufengblue）进行咨询，技术客服会拉你进入讨论群，讨论群中包含且不限于，本项目的未来发展、问题解答以及功能更新。
 

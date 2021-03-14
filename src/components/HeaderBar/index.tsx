@@ -16,7 +16,7 @@ import { getTheme } from "@utils/changeThemes";
 import { markdownParserResume, downloadDirect, downloadFetch, markdownParserArticle } from "@utils/helper";
 import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
-import { mdEditorRef } from "@src/utils/global";
+import { mdEditorRef, globalEditorCount } from "@src/utils/global";
 import svgMap from "@src/utils/svgMap";
 import { TUTORIALS_GUIDE } from '@src/utils/const';
 
@@ -27,6 +27,7 @@ const themes = [
     name: "默认（秋风同款）",
     src: "https://s3.qiufengh.com/muji/WechatIMG2702.png",
     isColor: true,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template1.pdf',
   },
   {
     id: "blue",
@@ -34,6 +35,7 @@ const themes = [
     name: "极简色",
     src: "https://s3.qiufengh.com/muji/WechatIMG2703.png",
     isColor: true,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template2.pdf',
   },
   {
     id: "orange",
@@ -41,6 +43,7 @@ const themes = [
     name: "朝阳黄",
     src: "https://s3.qiufengh.com/muji/WechatIMG2704.png",
     isColor: false,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template3.pdf',
   },
   {
     id: "pupple",
@@ -48,6 +51,7 @@ const themes = [
     name: "全彩风",
     src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
     isColor: false,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
   },
 ];
 
@@ -56,7 +60,7 @@ const HeaderBar = () => {
   const [template, setTemplate] = useState("default");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isExportVisible, setIsExportVisible] = useState(false);
-  const [isUsageVisible, setIsUsageVisible] = useState(true); 
+  const [isUsageVisible, setIsUsageVisible] = useState(false); 
   const formRef = useRef<FormInstance>(null);
 
   const handleOk = async () => {
@@ -168,12 +172,22 @@ const HeaderBar = () => {
         .render(content)
         .replace(/(\n|\r)/g, "");
       const theme = template;
+      let hide = message.loading("正在为你生成简历...", 0);
+      console.log('isGlobalEditor==', globalEditorCount);
+      if (globalEditorCount < 2) {
+        try {
+          hide();
+          const curThemes = themes.filter(item => item.id === theme);
+          await downloadFetch(curThemes[0].defaultUrl, `${name}.pdf` || "木及简历.pdf");
+        } catch (e) {
+          hide();
+        }
+        return;
+      }
       const themeColor = getComputedStyle(document.body).getPropertyValue(
         "--bg"
       );
-      let hide;
       try {
-        hide = message.loading("正在为你生成简历...", 0);
         let data = await getPdf({
           htmlContent,
           theme,
@@ -184,7 +198,7 @@ const HeaderBar = () => {
         hide();
         message.success("恭喜你，导出成功!")
       } catch (e) {
-        hide && hide();
+        hide();
         message.error("生成简历出错，请稍再试!");
       }
     }
@@ -210,6 +224,11 @@ const HeaderBar = () => {
         }}>
           选择模板
         </a>
+        <a className="ant-dropdown-link rs-link" onClick={() => {
+          setIsUsageVisible(true);
+        }}>
+          使用教程
+        </a>
         <a
           href="#"
           className="rs-link"
@@ -218,11 +237,6 @@ const HeaderBar = () => {
           }}
         >
           导出 pdf
-        </a>
-        <a className="ant-dropdown-link rs-link" onClick={() => {
-          setIsUsageVisible(true);
-        }}>
-          使用教程
         </a>
       </div>
       <div className="rs-header-bar__right">
@@ -256,6 +270,9 @@ const HeaderBar = () => {
         title="使用教程"
         visible={isUsageVisible}
         width={700}
+        onOk={() => {
+          setIsUsageVisible(false);
+        }}
         onCancel={() => {
           setIsUsageVisible(false);
         }}

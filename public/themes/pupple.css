@@ -163,9 +163,9 @@
   font-size: 14px;
   word-wrap: break-word;
   padding: 3px 6px;
-  color: #333;
+  color: #636363;
   border-radius: 4px;
   margin: 0 2px;
-  background-color: rgba(27, 31, 35, 0.05);
+  background-color: rgb(255 202 176);
   word-break: break-all;
 }

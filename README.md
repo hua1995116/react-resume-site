@@ -1,6 +1,9 @@
 # 木及简历
 
-一款用 `Markdown`就能写出好看简历的在线工具，简单、易用，可直接导出 pdf，告别使用 word 繁杂的编写方式。
+一款用 `Markdown`就能写出好看简历的在线工具，告别使用 word 繁杂的编写方式。
+
+- 简单、易用。
+- 可直接导出 pdf
 
 在线地址: https://resume.mdedit.online/
 

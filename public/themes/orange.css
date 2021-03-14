@@ -43,6 +43,9 @@
   position: relative;
   background: linear-gradient(#f9855d 5%, #fdd288 20%, white);
 }
+.rs-view .h1_block p:last-of-type {
+  padding-bottom: 20px;
+}
 .rs-view .h1_block::before {
   content: "";
   width: 70px;

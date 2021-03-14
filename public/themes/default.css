@@ -25,6 +25,9 @@
 .rs-view .h1_block a {
   color: #fff;
 }
+.rs-view .h1_block p:last-of-type {
+  padding-bottom: 20px;
+}
 .rs-view .lr-container {
   padding: 20px 0;
   display: flex;

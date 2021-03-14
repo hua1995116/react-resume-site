@@ -10,20 +10,21 @@ export const INIT_CONTENT = `
 
 浙江科技学院/信息与计算科学
 
-本科/2018年毕业/党员 
+
+本科/2018年毕业/党员
 
 :::
 
 ::: right
 [icon:blog https://qiufeng.blue](https://qiufeng.blue)
 
-[icon:github https://github.com/hua1995116]()
+[icon:github https://github.com/hua1995116](https://github.com/hua1995116)
 
 [icon:juejin 掘金](https://juejin.cn/user/923245497557111) 
 
 [icon:email qiufenghyf@163.com](mailto:qiufenghyf@163.com)
 
-icon:phone 178****8380
+icon:weixin qiufengblue
 
 :::
 
@@ -36,6 +37,10 @@ icon:phone 178****8380
 主持参与省、国家级项目4项；发表论文4篇，其中2篇EI索引。
 
 ## 工作
+
+### 美团（2018.7-至今）
+
+努力打工中...
 
 ### 杭州兑吧网络有限公司 - 实习 （2018.3-2018.7）
 \`工程化\` \`基建搭建\`
@@ -86,7 +91,7 @@ icon:phone 178****8380
 ### 实时聊天项目(webchat)
 \`Vue2.0\` \`Websocket\` \`Node.JS\` \`MongoDB\`
 
-在线地址：[https://www.qiufengh.com/](https://www.qiufengh.com/)（聊天室移动端，注册用户超过7000+，star将近1k）
+Github地址：[https://github.com/hua1995116/webchat](https://github.com/hua1995116/webchat)（聊天室移动端，注册用户超过7000+，star将近1k）
   
 负责前端构建,服务器架构,后端开发
   
@@ -96,7 +101,6 @@ icon:phone 178****8380
 - 开发Loading，Alert，Confirm等组件
 - 拥有日志系统以及消息的RSA算法加密
 - 基于redis的请求监控，过滤恶意请求
-
 
 
 ## 技能
@@ -121,3 +125,62 @@ icon:phone 178****8380
 - Redis
 
 `;
+
+export const TUTORIALS_GUIDE = `
+## 标题层级该怎么写？
+
+木及简历可以写出很多漂亮的主题简历，但是同时我们也 Markdown 扩展了一些额外的解析规则，因此也会对写法有一定的规范。
+
+建议在写简历过程中，使用**一级标题**来写在开头，常用来描述整体的主旨与标题，常用的就是，求职者的姓名 + 求职岗位的模式
+
+例如: 
+
+\\# 秋风 - 前端工程师
+
+这样不仅能能让面试官一眼就看到你这份简历的用途，因为在实际过程中，有很多同学没有很好地注明投递的方向，很容易造成投递方向错误。
+
+在写内容过程中，建议使用**二级标题**来写。
+
+例如: 
+
+\\## 教育背景 
+
+\\## 工作经验
+
+\\## 项目经验
+
+\\## 基础技能
+
+![1615716349000](https://s3.qiufengh.com/blog/1615716349000.jpg)
+
+
+
+## 如何写左右结构？
+由于在 Markdown 中直接写左右结构比较困难，因此我们扩展了 Markdown 的基础语法。这个抒写语法，对于 Markdown 重度使用者也不是什么高级的语法， VuePress、React官网等各大社区网站中都有用到。
+
+示例:
+
+![WechatIMG30782](https://s3.qiufengh.com/blog/WechatIMG30782.png)
+
+
+## 换主题颜色？
+
+在部分模板中，你可以通过更换自己所喜欢的主题色。
+
+点击预览的右上方按钮，可以进行更换主题色景。
+
+![1615716042526](https://s3.qiufengh.com/blog/1615716042526.jpg)
+
+注意，只有标记可换色的模板才可以进行更换主题色。
+
+![1615716378016](https://s3.qiufengh.com/blog/1615716378016.jpg)
+
+
+
+## 客服咨询
+
+你在使用中有任何问题，可以添加技术客服微信（qiufengblue）进行咨询，技术客服会拉你进入讨论群，讨论群中包含且不限于，本项目的未来发展、问题解答以及功能更新。
+
+
+
+`

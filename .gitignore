@@ -26,3 +26,4 @@ test.html
 test.js
 .eslintcache
 template.md
+templates/*

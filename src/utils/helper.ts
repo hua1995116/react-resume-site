@@ -3,19 +3,17 @@ import MdContainer from 'markdown-it-container';
 import MdHContainer from './markdonw-it-h-container';
 import MdEmjio from 'markdown-it-emoji';
 import svgMap from './svgMap';
+import axios from 'axios';
 
 export const markdownParserResume = new MarkdownIt();
 
 markdownParserResume
     .use(MdEmjio, {
         defs: svgMap,
-        shortcuts: {
-            "juejin": "icon:juejin",
-            "phone": "icon:phone",
-            "email": "icon:email",
-            "blog": "icon:blog",
-            "github": "icon:github",
-        }
+        shortcuts: Object.keys(svgMap).reduce<Record<string, string>>((obj, item) => {
+            obj[item] = `icon:${item}`;
+            return obj;
+        }, {})
     })
     .use(MdHContainer)
     .use(MdContainer, 'header')
@@ -50,6 +48,25 @@ export function downloadDirect(url: string, name: string) {
     aTag.click()
 }
 
+export function downloadByContent(content: any, filename: string, type: string) {
+  const aTag = document.createElement('a');
+  aTag.download = filename;
+  const blob = new Blob([content], { type });
+  const blobUrl = URL.createObjectURL(blob);
+  aTag.href = blobUrl;
+  aTag.click();
+  URL.revokeObjectURL(blobUrl);
+}
+
+export async function downloadFetch(url: string, name: string) {
+  const result = await axios({
+    method: 'get',
+    url,
+    responseType: 'blob'
+  });
+  downloadByContent(result.data, name, 'application/pdf');
+}
+
 export function copyText(value: string, callback?: any) {
     const input = document.createElement('input');
     input.setAttribute('readonly', 'readonly');
@@ -64,3 +81,4 @@ export function copyText(value: string, callback?: any) {
     document.body.removeChild(input);
 }
 
+export const markdownParserArticle = new MarkdownIt();

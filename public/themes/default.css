@@ -22,6 +22,9 @@
   -webkit-text-size-adjust: none;
   background: var(--bg);
 }
+.rs-view .h1_block a {
+  color: #fff;
+}
 .rs-view .lr-container {
   padding: 20px 0;
   display: flex;
@@ -143,7 +146,7 @@
   list-style: decimal;
 }
 .rs-view a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   background-color: transparent;
   outline: none;

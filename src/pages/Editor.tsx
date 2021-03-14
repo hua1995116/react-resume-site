@@ -17,6 +17,7 @@ const Editor: React.FC<Props> = (props) => {
   const { templateStore } = useStores();
   const editorRef = useRef<CodeMirror>(null);
   useEffect(() => {
+    // 由于子元素是 useEffect 中初始化，因此正常无法获取，需要延迟
     setTimeout(() => {
       setMdEditorRef(editorRef.current?.editor);
     })

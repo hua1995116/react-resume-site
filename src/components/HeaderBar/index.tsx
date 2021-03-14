@@ -8,14 +8,17 @@ import {
   Switch,
   Input,
   FormInstance,
+  Tag
 } from "antd";
 
 import "./index.less";
 import { getTheme } from "@utils/changeThemes";
-import { markdownParserResume, downloadDirect } from "@utils/helper";
-import { PdfParams, getPdf } from "@src/service/htmlToPdf";
+import { markdownParserResume, downloadDirect, downloadFetch, markdownParserArticle } from "@utils/helper";
+import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
 import { mdEditorRef } from "@src/utils/global";
+import svgMap from "@src/utils/svgMap";
+import { TUTORIALS_GUIDE } from '@src/utils/const';
 
 const themes = [
   {
@@ -23,24 +26,28 @@ const themes = [
     defaultColor: "#39393a",
     name: "默认（秋风同款）",
     src: "https://s3.qiufengh.com/muji/WechatIMG2702.png",
+    isColor: true,
   },
   {
     id: "blue",
     defaultColor: "#5974D4",
     name: "极简色",
     src: "https://s3.qiufengh.com/muji/WechatIMG2703.png",
+    isColor: true,
   },
   {
     id: "orange",
     defaultColor: "#39393a",
     name: "朝阳黄",
     src: "https://s3.qiufengh.com/muji/WechatIMG2704.png",
+    isColor: false,
   },
   {
     id: "pupple",
     defaultColor: "#36448f",
     name: "全彩风",
     src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
+    isColor: false,
   },
 ];
 
@@ -49,11 +56,8 @@ const HeaderBar = () => {
   const [template, setTemplate] = useState("default");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isExportVisible, setIsExportVisible] = useState(false);
+  const [isUsageVisible, setIsUsageVisible] = useState(true); 
   const formRef = useRef<FormInstance>(null);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
 
   const handleOk = async () => {
     await getTheme(template);
@@ -63,10 +67,6 @@ const HeaderBar = () => {
         document.body.style.setProperty("--bg", item.defaultColor);
       }
     });
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
     setIsModalVisible(false);
   };
 
@@ -102,7 +102,9 @@ const HeaderBar = () => {
             }}
           >
             <img className="template-img" src={item.src}></img>
-            <p className="template-title">{item.name}</p>
+            <p className="template-title">{item.name}
+              {item.isColor && <Tag color="#2db7f5">可换色</Tag>}
+            </p>
           </div>
         );
       })}
@@ -114,7 +116,7 @@ const HeaderBar = () => {
       <Menu.Item>
         <div className="rs-feed-group">
           <div className="rs-feed-group__wechat">
-            <div className="rs-feed-group__text">微信群</div>
+            <div className="rs-feed-group__text">微信群(wx号: qiufengblue)</div>
             <div className="bg"></div>
           </div>
           <div className="rs-feed-group__qq">
@@ -153,10 +155,6 @@ const HeaderBar = () => {
     setIsExportVisible(false);
   };
 
-  const handleSubmit = (values: any) => {
-    exportPdf(values);
-  };
-
   const exportPdf = async ({
     name,
     isMark,
@@ -182,8 +180,9 @@ const HeaderBar = () => {
           themeColor,
           isMark,
         });
-        downloadDirect(data.url, `${name}.pdf` || "木及简历.pdf");
+        await downloadFetch(data.url, `${name}.pdf` || "木及简历.pdf");
         hide();
+        message.success("恭喜你，导出成功!")
       } catch (e) {
         hide && hide();
         message.error("生成简历出错，请稍再试!");
@@ -206,7 +205,9 @@ const HeaderBar = () => {
             文件
           </a>
         </Dropdown>
-        <a className="ant-dropdown-link rs-link" onClick={showModal}>
+        <a className="ant-dropdown-link rs-link" onClick={() => {
+          setIsModalVisible(true);
+        }}>
           选择模板
         </a>
         <a
@@ -218,8 +219,15 @@ const HeaderBar = () => {
         >
           导出 pdf
         </a>
+        <a className="ant-dropdown-link rs-link" onClick={() => {}}>
+          使用教程
+        </a>
       </div>
       <div className="rs-header-bar__right">
+        <a className="ant-dropdown-link rs-link" href="https://github.com/hua1995116/react-resume-site" target="_blank" dangerouslySetInnerHTML={{
+          __html: svgMap['github']
+        }}>
+        </a>
         <Dropdown overlay={feedbackMenu}>
           <a
             className="ant-dropdown-link rs-link"
@@ -233,12 +241,26 @@ const HeaderBar = () => {
         title="请选择模板"
         visible={isModalVisible}
         onOk={handleOk}
-        onCancel={handleCancel}
+        onCancel={() => {
+          setIsModalVisible(false);
+        }}
         cancelText="取消"
         okText="确定"
         width={1100}
       >
         {templateContent}
+      </Modal>
+      <Modal
+        title="使用教程"
+        visible={isUsageVisible}
+        width={700}
+        onCancel={() => {
+          setIsUsageVisible(false);
+        }}
+      >
+        <div className="rs-article-container" dangerouslySetInnerHTML={{
+          __html: markdownParserArticle.render(TUTORIALS_GUIDE)
+        }}></div>
       </Modal>
       {isExportVisible && (
         <Modal
@@ -259,7 +281,9 @@ const HeaderBar = () => {
             initialValues={{
               isMark: true,
             }}
-            onFinish={handleSubmit}
+            onFinish={(values: any) => {
+              exportPdf(values);
+            }}
           >
             <Form.Item name="name" label="简历名称">
               <Input placeholder="不填则系统命名" />

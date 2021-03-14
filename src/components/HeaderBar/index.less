@@ -13,9 +13,12 @@
     display: flex;
     align-items: center;
   }
-  &&__right {
+  &__right {
     display: flex;
     justify-content: flex-end;
+    .icon {
+      fill: black;
+    }
   }
   .rs-logo {
     margin-left: 20px;
@@ -114,4 +117,14 @@
 .uploadMd {
   display: none;
   cursor: pointer;
+}
+
+
+.rs-article-container {
+  h2 {
+    font-size: 18px;
+  }
+  img {
+    width: 100%;
+  }
 }

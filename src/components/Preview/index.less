@@ -1,0 +1,39 @@
+.rs-pdf-preview {
+  position: fixed;
+  right: 60px;
+  top: 40px;
+  z-index: 10;
+  .icon {
+    display: block;
+    // fill: currentColor; 
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
+
+.rs-preview-line {
+  height: 2px;
+  width: 100%;
+  background-color: #ddd;
+  position: absolute;
+  left: 0;
+  z-index: 999;
+}
+
+.rs-preview-line::before {
+  content: "实际导出此处会有36px边距";
+  color: rgb(255, 0, 0);
+  position: absolute;
+  left: 45%;
+  transform: translate(0, -100%);
+}
+
+.rs-preview-line::after {
+  content: "实际导出此处会有36px边距";
+  color: rgb(255, 0, 0);
+  position: absolute;
+  left: 45%;
+  transform: translate(0, 2px);
+}

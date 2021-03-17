@@ -177,7 +177,6 @@ const HeaderBar = () => {
         .replace(/(\n|\r)/g, "");
       const theme = template;
       let hide = message.loading("正在为你生成简历...", 0);
-      console.log('isGlobalEditor==', globalEditorCount);
       if (globalEditorCount < 2) {
         try {
           hide();
@@ -305,15 +304,18 @@ const HeaderBar = () => {
               isMark: true,
             }}
             onFinish={(values: any) => {
-              exportPdf(values);
+              exportPdf({
+                ...values,
+                isMark: false
+              });
             }}
           >
             <Form.Item name="name" label="简历名称">
               <Input placeholder="不填则系统命名" />
             </Form.Item>
-            <Form.Item name="isMark" label="是否页尾" valuePropName="checked">
+            {/* <Form.Item name="isMark" label="是否页尾" valuePropName="checked">
               <Switch />
-            </Form.Item>
+            </Form.Item> */}
           </Form>
         </Modal>
       )}

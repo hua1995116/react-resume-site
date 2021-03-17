@@ -1,0 +1,40 @@
+:root {
+  --bg: #39393a;
+  // --bg: #3281C9;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
+a:hover {
+  color: #333;
+}
+a:active {
+  color: #333;
+}
+a:active,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+a:focus {
+  text-decoration: none;
+  outline: 0;
+}
+a[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.icon {
+  fill: #fff;
+  vertical-align: middle;
+}

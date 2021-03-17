@@ -92,7 +92,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "watch:themes": "gulp watch"
+    "watch:themes": "gulp watch",
+    "build:themes": "node public/themes/generate.js"
   },
   "eslintConfig": {
     "extends": [

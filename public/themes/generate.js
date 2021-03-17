@@ -11,4 +11,4 @@ const contentJSON = fileList.filter(item => item.indexOf('.css') > -1).reduce((j
   return json;
 }, {})
 
-fs.writeFileSync('theme.js', `module.exports = ${JSON.stringify(contentJSON)}`);
+fs.writeFileSync(path.join(__dirname, 'theme.js'), `module.exports = ${JSON.stringify(contentJSON)}`);

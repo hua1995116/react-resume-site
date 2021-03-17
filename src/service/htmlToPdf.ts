@@ -17,14 +17,14 @@ export async function getPdf(params: PdfParams) {
     const nowDate = new Date();
     const dateTime = nowDate.toUTCString();
     const signStr = "x-date: " + dateTime + "\n" + "source: " + source;
-    let sign = CryptoJS.HmacSHA1(signStr, SecretKey)
-    sign = CryptoJS.enc.Base64.stringify(sign)
-    sign = auth + sign + "\""
+    let sign = CryptoJS.HmacSHA1(signStr, SecretKey);
+    sign = CryptoJS.enc.Base64.stringify(sign);
+    sign = auth + sign + "\"";
     let res = await axios({
         method: 'post',
         url: 'https://service-d1t5xx72-1303026468.gz.apigw.tencentcs.com/release/pdfTest', // 用户 API 的访问路径
         data: params,
-        timeout: 8000,
+        timeout: 15 * 1000,
         headers: {
             "Source": source,
             "X-Date": dateTime,
@@ -32,5 +32,5 @@ export async function getPdf(params: PdfParams) {
         },
         withCredentials: true,
     })
-    return res.data
+    return res.data;
 }

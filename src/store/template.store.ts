@@ -1,8 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { INIT_COLOR } from '@utils/const'
-import { INIT_CONTENT } from '@utils/const';
+import { INIT_COLOR, INIT_CONTENT, LOCAL_STORE } from '@utils/const';
 
-const localContent = localStorage.getItem('md-resume');
+const localContent = localStorage.getItem(LOCAL_STORE.MD_RESUME);
 
 class TemplateStore {
 	color = INIT_COLOR;

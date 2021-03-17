@@ -1,4 +1,14 @@
-export const INIT_COLOR = '#39393a';
+export const LOCAL_STORE = {
+  MD_RESUME: 'md-resume',
+  MD_COUNT: 'md-count',
+  MD_THEME: 'md-theme',
+  MD_COLOR: 'md-color',
+  MD_THEME_LIST: 'md-theme-list'
+}
+
+export const INIT_COLOR = localStorage.getItem(LOCAL_STORE.MD_COLOR) || '#39393a';
+
+document.body.style.setProperty("--bg", INIT_COLOR);
 
 export const INIT_CONTENT = `
 # 秋风 - 前端工程师

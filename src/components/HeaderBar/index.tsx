@@ -18,7 +18,7 @@ import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
 import { mdEditorRef, globalEditorCount } from "@src/utils/global";
 import svgMap from "@src/utils/svgMap";
-import { TUTORIALS_GUIDE } from '@src/utils/const';
+import { TUTORIALS_GUIDE, LOCAL_STORE } from '@src/utils/const';
 
 const themes = [
   {
@@ -45,19 +45,21 @@ const themes = [
     isColor: false,
     defaultUrl: 'https://s3.qiufengh.com/muji/template/template3.pdf',
   },
-  {
-    id: "pupple",
-    defaultColor: "#36448f",
-    name: "全彩风",
-    src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
-    isColor: true,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
-  },
+  // {
+  //   id: "pupple",
+  //   defaultColor: "#36448f",
+  //   name: "全彩风",
+  //   src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
+  //   isColor: true,
+  //   defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
+  // },
 ];
+
+const default_theme = localStorage.getItem(LOCAL_STORE.MD_THEME) || themes[0].id;
 
 const HeaderBar = () => {
   const { templateStore } = useStores();
-  const [template, setTemplate] = useState("default");
+  const [template, setTemplate] = useState(default_theme);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isExportVisible, setIsExportVisible] = useState(false);
   const [isUsageVisible, setIsUsageVisible] = useState(false); 
@@ -69,6 +71,7 @@ const HeaderBar = () => {
       if (template === item.id) {
         templateStore.setColor(item.defaultColor);
         document.body.style.setProperty("--bg", item.defaultColor);
+        localStorage.setItem(LOCAL_STORE.MD_COLOR, item.defaultColor);
       }
     });
     setIsModalVisible(false);
@@ -102,6 +105,7 @@ const HeaderBar = () => {
               e.preventDefault();
               if (template !== item.id) {
                 setTemplate(item.id);
+                localStorage.setItem(LOCAL_STORE.MD_THEME, item.id);
               }
             }}
           >
@@ -166,7 +170,7 @@ const HeaderBar = () => {
     name: string;
     isMark: boolean;
   }) => {
-    const content = localStorage.getItem("md-resume");
+    const content = localStorage.getItem(LOCAL_STORE.MD_RESUME);
     if (content) {
       const htmlContent = markdownParserResume
         .render(content)
@@ -205,7 +209,7 @@ const HeaderBar = () => {
   };
 
   useEffect(() => {
-    getTheme("default");
+    getTheme(default_theme);
   }, []);
   return (
     <div className="rs-header-bar rs-link">

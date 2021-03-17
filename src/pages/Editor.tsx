@@ -4,6 +4,7 @@ import { markdownParserResume } from "@utils/helper";
 import debounce from "lodash-es/debounce";
 import { useStores } from "@src/store";
 import { setMdEditorRef, globalEditorCountIncrease, globalEditorCount } from "@src/utils/global";
+import { LOCAL_STORE } from '@src/utils/const';
 
 interface Props {
   setViewHtml: React.Dispatch<React.SetStateAction<string>>;
@@ -38,7 +39,7 @@ const Editor: React.FC<Props> = (props) => {
       onChange={debounce((editor: any) => {
         console.log(globalEditorCount, 'globalEditorCount==');
         if (globalEditorCount >= 2) {
-          localStorage.setItem('md-count', '999');
+          localStorage.setItem(LOCAL_STORE.MD_COUNT, '999');
         } else if (globalEditorCount === 1 || globalEditorCount === 0) {
           globalEditorCountIncrease();
         }
@@ -47,7 +48,7 @@ const Editor: React.FC<Props> = (props) => {
         if (!timerSave) {
           timerSave = window.setTimeout(() => {
             templateStore.setMdContent(content);
-            localStorage.setItem("md-resume", content);
+            localStorage.setItem(LOCAL_STORE.MD_RESUME, content);
             if (timerSave) {
               clearTimeout(timerSave);
               timerSave = null;
@@ -57,7 +58,7 @@ const Editor: React.FC<Props> = (props) => {
           clearTimeout(timerSave);
           timerSave = window.setTimeout(() => {
             templateStore.setMdContent(content);
-            localStorage.setItem("md-resume", content);
+            localStorage.setItem(LOCAL_STORE.MD_RESUME, content);
             if (timerSave) {
               clearTimeout(timerSave);
               timerSave = null;

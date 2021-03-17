@@ -17,3 +17,10 @@ html, body {
   width: 100%;
   height: calc(100% - 30px)
 }
+
+@font-face {
+  font-family: 'pingfang-sc';
+  src: url('https://s3.qiufengh.com/muji/font/sc-jian.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

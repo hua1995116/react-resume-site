@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, message } from "antd";
+import { Modal, message, Tooltip } from "antd";
 import svgMap, { SvgType } from "@src/utils/svgMap";
 import { copyText } from "@src/utils/helper";
 import "./index.less";
@@ -51,16 +51,18 @@ const Shortcuts = () => {
           );
         })}
       </Modal>
-      <div
-        className="rs-shortcuts"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <svg className="icon" aria-hidden="true">
-          <use xlinkHref="#icon-ziyuank" />
-        </svg>
-      </div>
+      <Tooltip title="icon快捷键">
+        <div
+          className="rs-shortcuts"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <svg className="icon" aria-hidden="true">
+            <use xlinkHref="#icon-ziyuank" />
+          </svg>
+        </div>
+      </Tooltip>
     </>
   );
 };

@@ -83,4 +83,6 @@ export function copyText(value: string, callback?: any) {
     document.body.removeChild(input);
 }
 
-export const markdownParserArticle = new MarkdownIt();
+export const markdownParserArticle = new MarkdownIt({
+    html: true
+});

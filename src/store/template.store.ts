@@ -6,6 +6,7 @@ const localContent = localStorage.getItem(LOCAL_STORE.MD_RESUME);
 class TemplateStore {
 	color = INIT_COLOR;
 	mdContent = localContent || INIT_CONTENT;
+	html = '';
 
 	constructor() {
 		makeAutoObservable(this);
@@ -17,6 +18,10 @@ class TemplateStore {
 
 	setMdContent = (content: string) => {
 		this.mdContent = content;
+	}
+
+	setHtml = (value: string) => {
+		this.html = value;
 	}
 }
 

@@ -7,12 +7,11 @@ import ColorPicker from './ColorPicker';
 import Shortcuts from '@src/components/Shortcuts';
 
 const Main = () => {
-  const [viewHtml, setViewHtml] = useState<string>('');
   return (
     <div className="rs-container">
       <SplitPane split="vertical" minSize={450}>
-        <Editor setViewHtml={setViewHtml}></Editor>
-        <View viewHtml={viewHtml}></View>
+        <Editor></Editor>
+        <View></View>
       </SplitPane>
       <ColorPicker></ColorPicker>
       <Shortcuts></Shortcuts>

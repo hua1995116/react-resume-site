@@ -3,12 +3,15 @@ export const LOCAL_STORE = {
   MD_COUNT: 'md-count',
   MD_THEME: 'md-theme',
   MD_COLOR: 'md-color',
-  MD_THEME_LIST: 'md-theme-list'
+  MD_THEME_LIST: 'md-theme-list',
+  MD_UPDATE_LOG: 'md-update-log'
 }
 
 export const INIT_COLOR = localStorage.getItem(LOCAL_STORE.MD_COLOR) || '#39393a';
 
 document.body.style.setProperty("--bg", INIT_COLOR);
+
+export const UPDATE_LOG_VERSION = 1;
 
 export const INIT_CONTENT = `
 # 秋风 - 前端工程师
@@ -196,3 +199,26 @@ export const TUTORIALS_GUIDE = `
 
 
 `
+
+export const UPDATE_CONTENT = `
+由于产品正在建设初期，希望广大网友能够多多提供一些建议，你们的建议使我们前进的动力。
+<img src="https://s3.qiufengh.com/blog/image-20210320172112285.png" width="300" />
+
+## 2021.03.20
+- 修复导出pdf后，在mac下复制错乱问题
+- 增加固定A4大小预览
+- 增加内置渲染插件
+- 增加更新提示
+
+## 2021.03.16
+- 优化主题的间距样式
+- 导出后的增加边距
+
+## 2021.03.15 
+- 支持多套模板切换主题
+- 支持快捷icon输入
+- 支持导出pdf
+- 支持 markdown 导入/导出
+- 加入使用教程说明
+
+`;

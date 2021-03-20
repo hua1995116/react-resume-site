@@ -1,7 +1,7 @@
 .rs-container {
   display: flex;
   width: 100%;
-  min-width: 1200px;
+  min-width: 1000px;
   height: 100%;
   position: relative;
   flex-direction: column;
@@ -11,7 +11,13 @@
   .rs-view-wrapper {
     width: 100%;
     height: 100%;
+    background-color: #606060;
     overflow-y: scroll;
+    .rs-view-inner {
+      width: 794px;
+      margin: 40px auto;
+      transform-origin: left top;
+    }
   }
 }
 

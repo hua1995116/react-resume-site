@@ -18,7 +18,7 @@ import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
 import { mdEditorRef, globalEditorCount } from "@src/utils/global";
 import svgMap from "@src/utils/svgMap";
-import { TUTORIALS_GUIDE, LOCAL_STORE } from '@src/utils/const';
+import { TUTORIALS_GUIDE, LOCAL_STORE, UPDATE_CONTENT, UPDATE_LOG_VERSION } from '@src/utils/const';
 
 const themes = [
   {
@@ -57,12 +57,16 @@ const themes = [
 
 const default_theme = localStorage.getItem(LOCAL_STORE.MD_THEME) || themes[0].id;
 
+const is_update = +(localStorage.getItem(LOCAL_STORE.MD_UPDATE_LOG) || 0) >= UPDATE_LOG_VERSION ? false : true;
+
 const HeaderBar = () => {
   const { templateStore } = useStores();
   const [template, setTemplate] = useState(default_theme);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isExportVisible, setIsExportVisible] = useState(false);
-  const [isUsageVisible, setIsUsageVisible] = useState(false); 
+  const [isUsageVisible, setIsUsageVisible] = useState(false);
+  const [isUpdateVisible, setIsUpdateVisible] = useState(is_update);
+
   const formRef = useRef<FormInstance>(null);
 
   const handleOk = async () => {
@@ -273,6 +277,8 @@ const HeaderBar = () => {
         title="使用教程"
         visible={isUsageVisible}
         width={700}
+        cancelText="取消"
+        okText="确定"
         onOk={() => {
           setIsUsageVisible(false);
         }}
@@ -284,6 +290,25 @@ const HeaderBar = () => {
           __html: markdownParserArticle.render(TUTORIALS_GUIDE)
         }}></div>
       </Modal>
+      {<Modal
+        title="更新日志"
+        visible={isUpdateVisible}
+        cancelText="取消"
+        okText="确定"
+        width={700}
+        onOk={() => {
+          localStorage.setItem(LOCAL_STORE.MD_UPDATE_LOG, `${UPDATE_LOG_VERSION}`);
+          setIsUpdateVisible(false);
+        }}
+        onCancel={() => {
+          localStorage.setItem(LOCAL_STORE.MD_UPDATE_LOG, `${UPDATE_LOG_VERSION}`);
+          setIsUpdateVisible(false);
+        }}
+      >
+        <div className="rs-article-container" dangerouslySetInnerHTML={{
+          __html: markdownParserArticle.render(UPDATE_CONTENT)
+        }}></div>
+      </Modal>}
       {isExportVisible && (
         <Modal
           title="导出确认"

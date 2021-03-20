@@ -5,6 +5,7 @@ import View from './View';
 import './Main.less';
 import ColorPicker from './ColorPicker';
 import Shortcuts from '@src/components/Shortcuts';
+import OnePage from '@src/components/OnePage';
 
 const Main = () => {
   return (
@@ -15,6 +16,7 @@ const Main = () => {
       </SplitPane>
       <ColorPicker></ColorPicker>
       <Shortcuts></Shortcuts>
+      <OnePage></OnePage>
     </div>
   );
 };

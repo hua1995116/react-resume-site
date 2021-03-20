@@ -23,7 +23,7 @@ const Shortcuts = () => {
   return (
     <>
       <Modal
-        title="图标快捷写法"
+        title="图标快捷写法(点击可快捷复制)"
         visible={isModalVisible}
         width={540}
         onOk={handleOk}

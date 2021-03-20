@@ -169,9 +169,11 @@ const HeaderBar = () => {
 
   const exportPdf = async ({
     name,
+    isOnePage,
     isMark,
   }: {
     name: string;
+    isOnePage: boolean;
     isMark: boolean;
   }) => {
     const content = localStorage.getItem(LOCAL_STORE.MD_RESUME);
@@ -200,6 +202,7 @@ const HeaderBar = () => {
           theme,
           themeColor,
           isMark,
+          isOnePage
         });
         await downloadFetch(data.url, name ? `${name}.pdf` : "木及简历.pdf");
         hide();
@@ -322,7 +325,7 @@ const HeaderBar = () => {
         >
           <Form
             ref={formRef}
-            labelCol={{ span: 4 }}
+            labelCol={{ span: 6 }}
             wrapperCol={{ span: 14 }}
             layout="horizontal"
             initialValues={{
@@ -338,9 +341,9 @@ const HeaderBar = () => {
             <Form.Item name="name" label="简历名称">
               <Input placeholder="不填则系统命名" />
             </Form.Item>
-            {/* <Form.Item name="isMark" label="是否页尾" valuePropName="checked">
+            <Form.Item name="isOnePage" label="是否一页纸" valuePropName="checked">
               <Switch />
-            </Form.Item> */}
+            </Form.Item>
           </Form>
         </Modal>
       )}

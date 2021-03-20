@@ -1,8 +1,41 @@
 * {
   font-family: 'pingfang-sc' !important;
 }
+.rs-view a {
+  color: #d4d4d4;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
 .rs-view img {
   max-width: 400px;
+}
+.rs-view code {
+  word-wrap: break-word;
+  padding: 3px 6px;
+  color: #333;
+  border-radius: 4px;
+  margin: 0 2px;
+  background-color: rgba(27, 31, 35, 0.05);
+  word-break: break-all;
+  font-size: 13px;
+}
+.rs-view h1 {
+  font-weight: 900;
+}
+.rs-view h2 {
+  font-weight: 700;
+}
+.rs-view h3 {
+  font-weight: 600;
+}
+.rs-view h4,
+.rs-view h5 {
+  font-weight: 500;
 }
 .rs-view {
   width: 100%;
@@ -91,7 +124,6 @@
   padding: 30px 0;
   margin: 0 50px;
   color: #fff;
-  font-weight: 800;
 }
 .rs-view .h2_block {
   position: relative;
@@ -104,7 +136,6 @@
   margin: 0px 50px;
   padding: 4px 10px;
   font-size: 16px;
-  font-weight: 700;
   text-align: left;
   color: #fff;
   border-bottom: 3px solid #ffcab0;
@@ -114,13 +145,11 @@
   padding: 10px 0 5px;
   line-height: 20px;
   overflow: hidden;
-  font-weight: 700;
   min-height: 30px;
-  font-size: 13px;
   margin-left: 50px;
   margin-right: 50px;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
 }
 .rs-view ul {
   margin: 0 50px;
@@ -162,14 +191,4 @@
   color: rgba(255, 255, 255, 0.25);
   cursor: not-allowed;
   pointer-events: none;
-}
-.rs-view code {
-  font-size: 14px;
-  word-wrap: break-word;
-  padding: 3px 6px;
-  color: #636363;
-  border-radius: 4px;
-  margin: 0 2px;
-  background-color: rgb(255 202 176);
-  word-break: break-all;
 }

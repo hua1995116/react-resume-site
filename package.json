@@ -93,6 +93,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "watch:themes": "gulp watch",
+    "compile:themes": "gulp compileLess",
     "build:themes": "node public/themes/generate.js"
   },
   "eslintConfig": {

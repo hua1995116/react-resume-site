@@ -135,12 +135,12 @@
   color: #fff;
   background-color: #fdd288;
 }
-.rs-view .h2_block::before {
+.rs-view h2::before {
   content: "";
-  width: calc(100% - 100px);
+  width: 694px;
   position: absolute;
-  top: 20px;
-  left: 50px;
+  top: 0px;
+  left: 0px;
   height: 2px;
   background-color: #fdd288;
 }

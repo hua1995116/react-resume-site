@@ -109,6 +109,16 @@
     text-align: center;
     color: #fff;
     background-color: #fdd288;
+    &::before {
+      content: "";
+      width: 694px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 2px;
+      background-color: #fdd288;
+      // border-top: 1px solid #ededed;
+    }
   }
 
   // h2::after {
@@ -120,17 +130,6 @@
   //   left: 120%;
   //   border-top: 1px solid #ededed;
   // }
-
-  .h2_block::before {
-    content: "";
-    width: calc(100% - 100px);
-    position: absolute;
-    top: 20px;
-    left: 50px;
-    height: 2px;
-    background-color: #fdd288;
-    // border-top: 1px solid #ededed;
-  }
 
   h3 {
     position: relative;

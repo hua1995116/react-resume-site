@@ -28,7 +28,7 @@ const Editor: React.FC<Props> = observer((props) => {
 
   return (
     <>
-      <div className="rs-editor-cover" style={{display: templateStore.isPreview ? 'block' : 'none'}}></div>
+      <div className="rs-editor-cover" style={{display: templateStore.isPreview ? 'flex' : 'none'}}>预览中，不可编辑</div>
       <CodeMirror
         ref={editorRef}
         value={templateStore.mdContent}

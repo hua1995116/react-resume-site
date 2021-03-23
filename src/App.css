@@ -24,3 +24,10 @@ html, body {
   font-weight: normal;
   font-style: normal;
 }
+
+
+.break-line {
+  display: block;
+  width: 100%;
+  height: 5px;
+}

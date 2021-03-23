@@ -7,9 +7,14 @@ class TemplateStore {
 	color = INIT_COLOR;
 	mdContent = localContent || INIT_CONTENT;
 	html = '';
+	isPreview = false;
 
 	constructor() {
 		makeAutoObservable(this);
+	}
+
+	setPreview = (value: boolean) => {
+		this.isPreview = value;
 	}
 
 	setColor = (color: string) => {

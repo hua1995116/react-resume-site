@@ -10,13 +10,13 @@ import {
   FormInstance,
   Tag
 } from "antd";
-
+import htmlParser from 'rs-md-html-parser';
 import "./index.less";
 import { getTheme } from "@utils/changeThemes";
 import { markdownParserResume, downloadDirect, downloadFetch, markdownParserArticle } from "@utils/helper";
 import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
-import { mdEditorRef, globalEditorCount } from "@src/utils/global";
+import { mdEditorRef, globalEditorCount, setHtmlView } from "@src/utils/global";
 import svgMap from "@src/utils/svgMap";
 import { TUTORIALS_GUIDE, LOCAL_STORE, UPDATE_CONTENT, UPDATE_LOG_VERSION } from '@src/utils/const';
 
@@ -72,10 +72,12 @@ const HeaderBar = () => {
   const handleOk = async () => {
     await getTheme(template);
     themes.map((item) => {
+      // 重新渲染
       if (template === item.id) {
         templateStore.setColor(item.defaultColor);
         document.body.style.setProperty("--bg", item.defaultColor);
         localStorage.setItem(LOCAL_STORE.MD_COLOR, item.defaultColor);
+        setHtmlView(item.defaultColor);
       }
     });
     setIsModalVisible(false);
@@ -176,11 +178,16 @@ const HeaderBar = () => {
     isOnePage: boolean;
     isMark: boolean;
   }) => {
+    // 设置渲染
+    if (!templateStore.isPreview) {
+      templateStore.setPreview(!templateStore.isPreview);
+      const rsViewer = document.querySelector(".rs-view") as HTMLElement;
+      htmlParser(rsViewer);
+    }
     const content = localStorage.getItem(LOCAL_STORE.MD_RESUME);
     if (content) {
-      const htmlContent = markdownParserResume
-        .render(content)
-        .replace(/(\n|\r)/g, "");
+      const newReg = RegExp('<div style="width: 100%; height: 5px; background-color: rgb(96, 96, 96); position: absolute; top: 1114px;"></div>', 'g');
+      const htmlContent = document.querySelector('.rs-view-inner')?.innerHTML.replace(/(\n|\r)/g, "").replace(newReg, '');
       const theme = template;
       let hide = message.loading("正在为你生成简历...", 0);
       if (globalEditorCount < 2) {
@@ -198,7 +205,7 @@ const HeaderBar = () => {
       );
       try {
         let data = await getPdf({
-          htmlContent,
+          htmlContent: String(htmlContent),
           theme,
           themeColor,
           isMark,

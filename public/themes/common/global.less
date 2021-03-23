@@ -17,11 +17,11 @@
     max-width: 400px;
   }
   code {
-    word-wrap: break-word;
     padding: 3px 6px;
+    display: inline-block;
     color: #333;
     border-radius: 4px;
-    margin: 0 2px;
+    margin: 0 2px 0px;
     background-color: rgba(27,31,35,.05);
     word-break: break-all;
     font-size: 13px;
@@ -37,5 +37,11 @@
   }
   h4, h5 {
     font-weight: 500;
+  }
+  .h2_block + .h2_block {
+    padding-top: 10px;
+  }
+  .h3_block + .h3_block {
+    padding-top: 0px;
   }
 }

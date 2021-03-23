@@ -16,6 +16,5 @@ export function renderPlugin(html: string, options: Options): string {
 
 export function colorPlugin(html: string, options: any): string {
     const newReg = new RegExp('#{color}', 'g');
-    console.log(newReg, '==', html.replace(newReg, options?.color.replace('#', '')));
     return html.replace(newReg, options?.color.replace('#', ''));
 }

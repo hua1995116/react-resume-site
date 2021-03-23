@@ -15,11 +15,11 @@
   max-width: 400px;
 }
 .rs-view code {
-  word-wrap: break-word;
   padding: 3px 6px;
+  display: inline-block;
   color: #333;
   border-radius: 4px;
-  margin: 0 2px;
+  margin: 0 2px 0px;
   background-color: rgba(27, 31, 35, 0.05);
   word-break: break-all;
   font-size: 13px;
@@ -36,6 +36,12 @@
 .rs-view h4,
 .rs-view h5 {
   font-weight: 500;
+}
+.rs-view .h2_block + .h2_block {
+  padding-top: 10px;
+}
+.rs-view .h3_block + .h3_block {
+  padding-top: 0px;
 }
 .rs-view {
   width: 100%;
@@ -109,7 +115,6 @@
   clear: both;
 }
 .rs-view p {
-  margin-top: 8px;
   margin-bottom: 0px;
   margin-left: 50px;
   margin-right: 50px;

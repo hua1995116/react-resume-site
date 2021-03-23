@@ -11191,6 +11191,11 @@ rollup@^1.31.1:
     "@types/node" "*"
     acorn "^7.1.0"
 
+rs-md-html-parser@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/rs-md-html-parser/-/rs-md-html-parser-0.1.0.tgz#a036a4e1afd8cab32b7d11afbf3a4237f146e561"
+  integrity sha512-J/kd5mJblB+gmJxN41oFobp+u/7qoEVHBKku9giHYVRz2gWxTUOufPMC9+UKMG46XEvX9DMTl/nKiwTQlrEjUg==
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.npm.taobao.org/rsvp/download/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"

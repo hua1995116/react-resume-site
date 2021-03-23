@@ -14,7 +14,7 @@ const OnePage = () => {
           const inner = document.querySelector('.rs-view-inner') as HTMLElement;
           if (!open) {
             inner.style.overflow = 'hidden';
-            inner.style.height = '1122px';
+            inner.style.height = '1114px';
             message.success('打开一页纸模式');
           } else {
             inner.style.overflow = 'visible';
@@ -24,7 +24,8 @@ const OnePage = () => {
           setOpen(!open);
         }}
       >
-        <svg
+        单页模式
+        {/* <svg
           className="icon"
           aria-hidden="true"
           style={{
@@ -32,7 +33,7 @@ const OnePage = () => {
           }}
         >
           <use xlinkHref="#icon-wendang1" />
-        </svg>
+        </svg> */}
       </div>
     </Tooltip>
   );

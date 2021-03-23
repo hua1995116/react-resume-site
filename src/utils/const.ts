@@ -11,7 +11,7 @@ export const INIT_COLOR = localStorage.getItem(LOCAL_STORE.MD_COLOR) || '#39393a
 
 document.body.style.setProperty("--bg", INIT_COLOR);
 
-export const UPDATE_LOG_VERSION = 1;
+export const UPDATE_LOG_VERSION = 2;
 
 export const INIT_CONTENT = `
 # 秋风 - 前端工程师
@@ -203,6 +203,10 @@ export const TUTORIALS_GUIDE = `
 export const UPDATE_CONTENT = `
 由于产品正在建设初期，希望广大网友能够多多提供一些建议，你们的建议使我们前进的动力。
 <img src="https://s3.qiufengh.com/blog/image-20210320172112285.png" width="300" />
+
+## 2021.03.22
+- 修复 tag 的间距问题
+- 增加预览功能，预览可查看导出后的排版样式
 
 ## 2021.03.20
 - 修复导出pdf后，在mac下复制错乱问题

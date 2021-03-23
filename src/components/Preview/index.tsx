@@ -10,7 +10,6 @@ const Preview = () => {
   const handlePreview = () => {
     if (!templateStore.isPreview) {
       message.success('打开预览模式');
-      templateStore.setPreview(!templateStore.isPreview);
       const rsViewer = document.querySelector(".rs-view") as HTMLElement;
       htmlParser(rsViewer);
     } else {
@@ -18,6 +17,7 @@ const Preview = () => {
       // 重新宣传的逻辑
       setHtmlView(templateStore.color);
     }
+    templateStore.setPreview(!templateStore.isPreview)
   }
   return (
     <div onClick={handlePreview} className="rs-preview">

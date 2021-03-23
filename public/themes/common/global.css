@@ -14,3 +14,10 @@
   word-break: break-all;
   font-size: 12px;
 }
+
+
+.break-line {
+  display: block;
+  width: 100%;
+  height: 5px;
+}

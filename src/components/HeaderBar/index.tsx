@@ -180,14 +180,15 @@ const HeaderBar = () => {
   }) => {
     // 设置渲染
     if (!templateStore.isPreview) {
-      templateStore.setPreview(!templateStore.isPreview);
+      templateStore.setPreview(true);
       const rsViewer = document.querySelector(".rs-view") as HTMLElement;
       htmlParser(rsViewer);
     }
+    const rsLine = document.querySelectorAll('.rs-line-split');
+    rsLine.forEach(item => item.parentNode?.removeChild(item));
     const content = localStorage.getItem(LOCAL_STORE.MD_RESUME);
     if (content) {
-      const newReg = RegExp('<div style="width: 100%; height: 5px; background-color: rgb(96, 96, 96); position: absolute; top: 1114px;"></div>', 'g');
-      const htmlContent = document.querySelector('.rs-view-inner')?.innerHTML.replace(/(\n|\r)/g, "").replace(newReg, '');
+      const htmlContent = document.querySelector('.rs-view-inner')?.innerHTML.replace(/(\n|\r)/g, "");
       const theme = template;
       let hide = message.loading("正在为你生成简历...", 0);
       if (globalEditorCount < 2) {
@@ -218,6 +219,8 @@ const HeaderBar = () => {
         hide();
         message.error("生成简历出错，请稍再试!");
       }
+      templateStore.setPreview(false);
+      setHtmlView(templateStore.color);
     }
   };
 

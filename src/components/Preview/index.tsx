@@ -19,6 +19,7 @@ const Preview = observer(() => {
       // templateStore.setHtml(setHtmlView(templateStore.color));
       console.log(setHtmlView(templateStore.color));
       rsViewer.innerHTML = setHtmlView(templateStore.color);
+      rsViewer.style.height = 'auto';
     }
     templateStore.setPreview(!templateStore.isPreview)
   }

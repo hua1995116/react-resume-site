@@ -77,7 +77,11 @@ const HeaderBar = () => {
         templateStore.setColor(item.defaultColor);
         document.body.style.setProperty("--bg", item.defaultColor);
         localStorage.setItem(LOCAL_STORE.MD_COLOR, item.defaultColor);
-        templateStore.setHtml(setHtmlView(item.defaultColor));
+        templateStore.setPreview(false);
+        const rsViewer = document.querySelector(".rs-view") as HTMLElement;
+        rsViewer.innerHTML = setHtmlView(templateStore.color);
+        rsViewer.style.height = 'auto';
+        // templateStore.setHtml(setHtmlView(item.defaultColor));
       }
     });
     setIsModalVisible(false);
@@ -179,9 +183,9 @@ const HeaderBar = () => {
     isMark: boolean;
   }) => {
     // 设置渲染
+    const rsViewer = document.querySelector(".rs-view") as HTMLElement;
     if (!templateStore.isPreview) {
       templateStore.setPreview(true);
-      const rsViewer = document.querySelector(".rs-view") as HTMLElement;
       htmlParser(rsViewer);
     }
     const rsLine = document.querySelectorAll('.rs-line-split');
@@ -220,7 +224,8 @@ const HeaderBar = () => {
         message.error("生成简历出错，请稍再试!");
       }
       templateStore.setPreview(false);
-      templateStore.setHtml(setHtmlView(templateStore.color));
+      rsViewer.innerHTML = setHtmlView(templateStore.color);
+      rsViewer.style.height = 'auto';
     }
   };
 

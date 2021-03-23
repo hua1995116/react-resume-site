@@ -47,9 +47,9 @@ time, mark, audio, video {
   background:transparent;
 }
 
-body {
+/* body {
   line-height:1;
-}
+} */
 
 :focus {
 outline: 1;
@@ -200,7 +200,7 @@ body {
   background-color: #eee;
   padding: 20px;
   color: #333;
-  line-height: 1.5;
+  /* line-height: 1.5; */
   letter-spacing: 1px
 }
 .down {

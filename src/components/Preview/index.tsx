@@ -15,7 +15,7 @@ const Preview = () => {
     } else {
       message.success('关闭预览模式');
       // 重新宣传的逻辑
-      setHtmlView(templateStore.color);
+      templateStore.setHtml(setHtmlView(templateStore.color));
     }
     templateStore.setPreview(!templateStore.isPreview)
   }

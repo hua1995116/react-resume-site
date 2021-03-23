@@ -77,7 +77,7 @@ const HeaderBar = () => {
         templateStore.setColor(item.defaultColor);
         document.body.style.setProperty("--bg", item.defaultColor);
         localStorage.setItem(LOCAL_STORE.MD_COLOR, item.defaultColor);
-        setHtmlView(item.defaultColor);
+        templateStore.setHtml(setHtmlView(item.defaultColor));
       }
     });
     setIsModalVisible(false);
@@ -220,7 +220,7 @@ const HeaderBar = () => {
         message.error("生成简历出错，请稍再试!");
       }
       templateStore.setPreview(false);
-      setHtmlView(templateStore.color);
+      templateStore.setHtml(setHtmlView(templateStore.color));
     }
   };
 

@@ -12,6 +12,7 @@ export interface PdfParams {
     themeColor: string
     isMark: boolean
     isOnePage: boolean
+    pages: string
 }
 
 export async function getPdf(params: PdfParams) {

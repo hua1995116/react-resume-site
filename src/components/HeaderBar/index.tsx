@@ -188,6 +188,7 @@ const HeaderBar = () => {
       templateStore.setPreview(true);
       htmlParser(rsViewer);
     }
+    const pages = rsViewer.dataset.pages || '1';
     const rsLine = document.querySelectorAll('.rs-line-split');
     rsLine.forEach(item => item.parentNode?.removeChild(item));
     const content = localStorage.getItem(LOCAL_STORE.MD_RESUME);
@@ -214,7 +215,8 @@ const HeaderBar = () => {
           theme,
           themeColor,
           isMark,
-          isOnePage
+          isOnePage,
+          pages
         });
         await downloadFetch(data.url, name ? `${name}.pdf` : "木及简历.pdf");
         hide();

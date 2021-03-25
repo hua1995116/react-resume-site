@@ -15,7 +15,7 @@
     margin-bottom: 40px;
   }
   .block {
-    margin-top: 15px;
+    margin-top: 10px;
   }
   .block::before {
     display: block;
@@ -39,16 +39,18 @@
     border-bottom: 1px solid #ddd;
   }
 
+  .lr-container {
+    padding: 10px 0 20px;
+    display: flex;
+  }
+
   .left {
-    float: left;
-    width: 50%;
+    flex: 1;
     text-align: left;
   }
 
   .right {
-    float: right;
-    width: 50%;
-    // flex: 1;
+    flex: 1;
     text-align: right;
   }
   p {
@@ -58,7 +60,7 @@
     line-height: 18px;
     font-size: 14px;
     color: #747474;
-    margin-top: 8px;
+    // margin-top: 8px;
     margin-bottom: 0px;
     margin-left: 50px;
     margin-right: 50px;
@@ -75,13 +77,11 @@
     font-size: 20px;
     color: var(--bg);
     border-bottom: 1px solid var(--bg);
-    margin-top: 30px;
     margin-left: 50px;
     margin-right: 50px;
   }
 
   h3 {
-    margin: 15px 0;
     font-size: 14px;
     margin-left: 50px;
     margin-right: 50px;

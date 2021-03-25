@@ -35,6 +35,12 @@
 }
 .rs-view h4,
 .rs-view h5 {
+  position: relative;
+  line-height: 20px;
+  overflow: hidden;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 13px;
   font-weight: 500;
 }
 .rs-view .h2_block + .h2_block {
@@ -42,6 +48,9 @@
 }
 .rs-view .h3_block + .h3_block {
   padding-top: 0px;
+}
+.rs-view ul {
+  overflow: hidden;
 }
 .break-line {
   display: block;
@@ -63,7 +72,7 @@
   margin-bottom: 40px;
 }
 .rs-view .block {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .rs-view .block::before {
   display: block;
@@ -85,14 +94,16 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
 }
+.rs-view .lr-container {
+  padding: 10px 0 20px;
+  display: flex;
+}
 .rs-view .left {
-  float: left;
-  width: 50%;
+  flex: 1;
   text-align: left;
 }
 .rs-view .right {
-  float: right;
-  width: 50%;
+  flex: 1;
   text-align: right;
 }
 .rs-view p {
@@ -100,7 +111,6 @@
   line-height: 18px;
   font-size: 14px;
   color: #747474;
-  margin-top: 8px;
   margin-bottom: 0px;
   margin-left: 50px;
   margin-right: 50px;
@@ -115,12 +125,10 @@
   font-size: 20px;
   color: var(--bg);
   border-bottom: 1px solid var(--bg);
-  margin-top: 30px;
   margin-left: 50px;
   margin-right: 50px;
 }
 .rs-view h3 {
-  margin: 15px 0;
   font-size: 14px;
   margin-left: 50px;
   margin-right: 50px;

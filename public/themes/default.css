@@ -35,6 +35,12 @@
 }
 .rs-view h4,
 .rs-view h5 {
+  position: relative;
+  line-height: 20px;
+  overflow: hidden;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 13px;
   font-weight: 500;
 }
 .rs-view .h2_block + .h2_block {
@@ -42,6 +48,9 @@
 }
 .rs-view .h3_block + .h3_block {
   padding-top: 0px;
+}
+.rs-view ul {
+  overflow: hidden;
 }
 .break-line {
   display: block;
@@ -145,7 +154,7 @@
   z-index: 1;
   width: calc(100% - 120px - 30% * 2);
   min-width: 100px;
-  margin: 0px auto;
+  margin: 0px auto 5px;
   padding: 4px 10px;
   border-radius: 32px;
   font-size: 16px;
@@ -172,10 +181,8 @@
 }
 .rs-view h3 {
   position: relative;
-  padding: 10px 0 5px;
   line-height: 20px;
   overflow: hidden;
-  min-height: 30px;
   margin-left: 50px;
   margin-right: 50px;
   font-size: 14px;

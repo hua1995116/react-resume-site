@@ -52,6 +52,23 @@
 .rs-view ul {
   overflow: hidden;
 }
+.rs-view ul li {
+  list-style: square inside;
+}
+.rs-view li ul li {
+  list-style: decimal;
+}
+.rs-view ol {
+  overflow: hidden;
+  margin: 0 50px;
+}
+.rs-view ol li {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+.rs-view ol ul li {
+  list-style: circle inside;
+}
 .break-line {
   display: block;
   width: 100%;
@@ -181,11 +198,11 @@
 }
 .rs-view h3 {
   position: relative;
-  line-height: 20px;
+  line-height: 1.8;
   overflow: hidden;
   margin-left: 50px;
   margin-right: 50px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .rs-view ul {
   margin: 0 50px;
@@ -193,10 +210,6 @@
 .rs-view li {
   font-size: 13px;
   margin-top: 8px;
-  list-style: square inside;
-}
-.rs-view li ul li {
-  list-style: decimal;
 }
 .rs-view a {
   color: #9a9a9a;

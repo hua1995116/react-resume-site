@@ -52,6 +52,23 @@
 .rs-view ul {
   overflow: hidden;
 }
+.rs-view ul li {
+  list-style: square inside;
+}
+.rs-view li ul li {
+  list-style: decimal;
+}
+.rs-view ol {
+  overflow: hidden;
+  margin: 0 50px;
+}
+.rs-view ol li {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+.rs-view ol ul li {
+  list-style: circle inside;
+}
 .break-line {
   display: block;
   width: 100%;
@@ -175,10 +192,6 @@
 .rs-view li {
   font-size: 13px;
   margin-top: 8px;
-  list-style: square inside;
-}
-.rs-view li ul li {
-  list-style: decimal;
 }
 .rs-view a {
   color: #fff;

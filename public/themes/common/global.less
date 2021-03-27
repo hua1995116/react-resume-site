@@ -52,6 +52,23 @@
   }
   ul {
     overflow: hidden;
+    li {
+      list-style: square inside;
+    }
+  }
+  li ul li {
+    list-style: decimal;
+  }
+  ol {
+    overflow: hidden;
+    margin: 0 50px;
+    li {
+      list-style-type: decimal;
+      list-style-position: inside;
+    }
+  }
+  ol ul li {
+    list-style: circle inside;
   }
 }
 

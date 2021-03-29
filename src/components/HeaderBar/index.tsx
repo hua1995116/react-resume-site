@@ -93,7 +93,11 @@ const HeaderBar = () => {
     reader.readAsText(resultFile);
     reader.onload = (e) => {
       if (e.target?.result) {
-          mdEditorRef && (mdEditorRef.setValue(e.target.result));
+        mdEditorRef && (mdEditorRef.setValue(e.target.result));
+        templateStore.setPreview(false);
+        const rsViewer = document.querySelector(".rs-view") as HTMLElement;
+        rsViewer.innerHTML = setHtmlView(templateStore.color);
+        rsViewer.style.height = 'auto';
       }
     };
   };

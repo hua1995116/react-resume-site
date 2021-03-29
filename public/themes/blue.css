@@ -63,11 +63,13 @@
   margin: 0 50px;
 }
 .rs-view ol li {
-  list-style-type: decimal;
-  list-style-position: inside;
+  list-style: decimal inside;
 }
 .rs-view ol ul li {
   list-style: circle inside;
+}
+.rs-view strong {
+  font-size: 14px;
 }
 .break-line {
   display: block;

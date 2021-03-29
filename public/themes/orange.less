@@ -8,7 +8,7 @@
   overflow-y: scroll;
 
   .lr-container {
-    padding: 20px 0;
+    padding: 10px 0 20px;
     display: flex;
   }
 
@@ -18,6 +18,13 @@
   .h5_block {
     color: #000;
     background-color: #fff;
+  }
+
+  .h2_block a,
+  .h3_block a,
+  .h4_block a,
+  .h5_block a {
+    color: #9a9a9a;
   }
 
   .block::before {
@@ -94,11 +101,13 @@
   }
   .h2_block {
     position: relative;
-    padding: 20px 0;
+    border: 0px;
+    margin-top: -1px;
+    padding: 20px 0 10px;
   }
 
-  .h2_block + .h2_block {
-    padding-top: 0px;
+  .h3_block {
+    padding: 10px 0;
   }
 
   h2 {
@@ -137,12 +146,11 @@
 
   h3 {
     position: relative;
-    // padding: 0px 0 5px;
-    line-height: 20px;
+    line-height: 1.8;
     overflow: hidden;
     margin-left: 50px;
     margin-right: 50px;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   ul {

@@ -84,7 +84,7 @@
   overflow-y: scroll;
 }
 .rs-view .lr-container {
-  padding: 20px 0;
+  padding: 10px 0 20px;
   display: flex;
 }
 .rs-view .h2_block,
@@ -93,6 +93,12 @@
 .rs-view .h5_block {
   color: #000;
   background-color: #fff;
+}
+.rs-view .h2_block a,
+.rs-view .h3_block a,
+.rs-view .h4_block a,
+.rs-view .h5_block a {
+  color: #9a9a9a;
 }
 .rs-view .block::before {
   display: block;
@@ -148,10 +154,12 @@
 }
 .rs-view .h2_block {
   position: relative;
-  padding: 20px 0;
+  border: 0px;
+  margin-top: -1px;
+  padding: 20px 0 10px;
 }
-.rs-view .h2_block + .h2_block {
-  padding-top: 0px;
+.rs-view .h3_block {
+  padding: 10px 0;
 }
 .rs-view h2 {
   position: relative;
@@ -177,11 +185,11 @@
 }
 .rs-view h3 {
   position: relative;
-  line-height: 20px;
+  line-height: 1.8;
   overflow: hidden;
   margin-left: 50px;
   margin-right: 50px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .rs-view ul {
   margin: 0 50px;

@@ -68,9 +68,6 @@
 .rs-view ol ul li {
   list-style: circle inside;
 }
-.rs-view strong {
-  font-size: 14px;
-}
 .break-line {
   display: block;
   width: 100%;

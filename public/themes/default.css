@@ -56,7 +56,8 @@
   list-style: square inside;
 }
 .rs-view li ul li {
-  list-style: decimal;
+  padding-left: 1px;
+  list-style: circle inside;
 }
 .rs-view ol {
   overflow: hidden;
@@ -66,6 +67,7 @@
   list-style: decimal inside;
 }
 .rs-view ol ul li {
+  padding-left: 1px;
   list-style: circle inside;
 }
 .break-line {

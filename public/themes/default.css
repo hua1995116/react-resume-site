@@ -80,7 +80,6 @@
   display: flex;
   flex-direction: column;
   background: #fff;
-  overflow-y: scroll;
   -webkit-text-size-adjust: none;
 }
 .rs-view h1 {

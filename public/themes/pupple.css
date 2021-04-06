@@ -80,7 +80,6 @@
   display: flex;
   flex-direction: column;
   background: #fff;
-  overflow-y: scroll;
   position: relative;
   z-index: 2;
   -webkit-text-size-adjust: none;

@@ -202,7 +202,7 @@ export const TUTORIALS_GUIDE = `
 
 export const UPDATE_CONTENT = `
 由于产品正在建设初期，希望广大网友能够多多提供一些建议，你们的建议使我们前进的动力。
-<img src="https://s3.qiufengh.com/blog/WechatIMG36149.jpeg" width="300" />
+<img src="https://s3.qiufengh.com/blog/1618197167151.jpg" width="300" />
 
 ## 2021.03.28
 - 修复因center标签引起的渲染位置错误

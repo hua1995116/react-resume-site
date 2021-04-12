@@ -241,7 +241,10 @@ const HeaderBar = () => {
   return (
     <div className="rs-header-bar rs-link">
       <div className="rs-header-bar__left">
-        <a className="rs-logo rs-link">✍️ 木及简历</a>
+        <a className="rs-logo rs-link">
+          <img src="https://s3.qiufengh.com/muji/muji-logo.jpg" alt=""/>
+          木及简历
+        </a>
         <Dropdown overlay={filesMenu} trigger={["click"]}>
           <a
             className="ant-dropdown-link rs-link"

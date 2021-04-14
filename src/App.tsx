@@ -8,6 +8,7 @@ import "./themes/common.less"
 // import "./themes/default.less"
 // import "./themes/blue.less"
 import HeaderBar from './components/HeaderBar/index';
+import Square from './pages/Square';
 import "@src/utils/window-event";
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
           <Route exact path="/">
             <Main></Main>
           </Route>
-          <Route path="/home">
-            {/* <Home></Home> */}
+          <Route path="/square">
+            <Square></Square>
           </Route>
         </Switch>
       </Router>

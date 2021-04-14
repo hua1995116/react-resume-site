@@ -1,0 +1,32 @@
+.rs-square-container {
+  padding: 20px ;
+  min-height: calc(100vh - 30px);
+  background-color: #f0f9ff;
+}
+.rs-square {
+  width: 200px;
+  padding: 10px;
+  border-radius: 2px;
+  transition: all 0.5s;
+}
+.rs-square:hover {
+  box-shadow: 0 0 5px 1px #af9d9d;
+}
+.rs-square img {
+  width: 100%;
+}
+.rs-square .rs-userInfo {
+  padding: 10px 0;
+  font-size: 14px;
+}
+.rs-square .rs-userInfo span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #46505a;
+}
+.rs-square .rs-userInfo img {
+  width: 20px;
+  border-radius: 40%;
+}

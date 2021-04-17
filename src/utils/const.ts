@@ -39,7 +39,8 @@ export const LOCAL_STORE = {
   MD_THEME: 'md-theme',
   MD_COLOR: 'md-color',
   MD_THEME_LIST: 'md-theme-list',
-  MD_UPDATE_LOG: 'md-update-log'
+  MD_UPDATE_LOG: 'md-update-log',
+  MD_HISTORY: 'md-history'
 }
 
 export const INIT_COLOR = localStorage.getItem(LOCAL_STORE.MD_COLOR) || '#39393a';

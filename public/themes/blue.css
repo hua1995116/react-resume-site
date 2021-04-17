@@ -1,6 +1,14 @@
 * {
   font-family: 'pingfang-sc' !important;
 }
+.rs-view .left {
+  flex: auto;
+  text-align: left;
+}
+.rs-view .right {
+  flex: auto;
+  text-align: right;
+}
 .rs-view a {
   color: #d4d4d4;
   text-decoration: none;
@@ -114,14 +122,6 @@
 .rs-view .lr-container {
   padding: 10px 0 20px;
   display: flex;
-}
-.rs-view .left {
-  flex: 1;
-  text-align: left;
-}
-.rs-view .right {
-  flex: 1;
-  text-align: right;
 }
 .rs-view p {
   display: block;

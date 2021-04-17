@@ -1,6 +1,6 @@
 import React from 'react';
 import htmlParser from 'rs-md-html-parser';
-import { message, Switch } from "antd";
+import { message, Switch, Tooltip } from "antd";
 import { useStores } from "@src/store";
 import { setHtmlView } from "@src/utils/global";
 import { observer } from "mobx-react";
@@ -24,12 +24,14 @@ const Preview = observer(() => {
     setPreview(!isPreview)
   }
   return (
-    <div onClick={handlePreview} className="rs-preview">
-      <span>{ isPreview ? "预览模式" : "编辑模式" }</span>
-      <Switch size="small" checked={isPreview} onChange={() => {
-        setPreview(!isPreview);
-      }}/>
-    </div>
+    <Tooltip title="预览模式为最终pdf打印的样子">
+      <div onClick={handlePreview} className="rs-preview">
+        <span>{ isPreview ? "预览模式" : "编辑模式" }</span>
+        <Switch size="small" checked={isPreview} onChange={() => {
+          setPreview(!isPreview);
+        }}/>
+      </div>
+    </Tooltip>
   )
 });
 

@@ -21,6 +21,7 @@ import { TUTORIALS_GUIDE, LOCAL_STORE, UPDATE_CONTENT, UPDATE_LOG_VERSION } from
 import { observer } from "mobx-react";
 import { themes } from '@utils/const';
 import Shortcuts from "@src/components/Shortcuts";
+import History from "@src/components/History";
 
 const is_update = +(localStorage.getItem(LOCAL_STORE.MD_UPDATE_LOG) || 0) >= UPDATE_LOG_VERSION ? false : true;
 
@@ -82,23 +83,6 @@ const HeaderBar = observer(() => {
         );
       })}
     </div>
-  );
-
-  const feedbackMenu = (
-    <Menu>
-      <Menu.Item>
-        <div className="rs-feed-group">
-          <div className="rs-feed-group__wechat">
-            <div className="rs-feed-group__text">微信群(wx号: qiufengblue)</div>
-            <div className="bg"></div>
-          </div>
-          <div className="rs-feed-group__qq">
-            <div className="rs-feed-group__text">qq群(699817990)</div>
-            <div className="bg"></div>
-          </div>
-        </div>
-      </Menu.Item>
-    </Menu>
   );
 
   const filesMenu = (
@@ -214,6 +198,7 @@ const HeaderBar = observer(() => {
           使用教程
         </a>
         <Shortcuts></Shortcuts>
+        <History></History>
         <a
           href="#"
           className="rs-link"

@@ -1,11 +1,35 @@
 import { LOCAL_STORE, themes } from '@src/utils/const';
 import { markdownParserResume } from "@utils/helper";
 import { renderPlugin, colorPlugin } from '@src/utils/plugins';
-import type TemplateStore from "@src/store/template.store";
 import { getTheme } from "@utils/changeThemes";
 
 export let mdEditorRef: any = null;
 export let globalEditorCount = Number(localStorage.getItem(LOCAL_STORE.MD_COUNT)) || 0;
+
+interface HistoryInfo {
+    md: string
+    theme: string
+    color: string
+}
+
+export type HistoryLocalInfo = HistoryInfo & {time: number}
+
+export function setMdHistory(value: HistoryInfo) {
+    const { MD_HISTORY } = LOCAL_STORE;
+    const historyStr = localStorage.getItem(MD_HISTORY);
+    let historyObject: HistoryLocalInfo[] = [];
+    if (historyStr) {
+        historyObject = JSON.parse(historyStr);
+    }
+    if (historyObject.length === 8) {
+        historyObject.shift();
+    }
+    historyObject.push({
+        ...value,
+        time: Date.now()
+    });
+    localStorage.setItem(MD_HISTORY, JSON.stringify(historyObject));
+}
 
 export function setMdEditorRef(editor: any) {
     mdEditorRef = editor;
@@ -29,7 +53,6 @@ export function setHtmlView(color: string) {
 
 // 用户更新 html
 export function renderViewStyle(color: string) {
-    // templateStore.setPreview(false);
     const rsViewer = document.querySelector(".rs-view") as HTMLElement;
     rsViewer.innerHTML = setHtmlView(color);
     rsViewer.style.height = 'auto';
@@ -50,10 +73,4 @@ export async function updateTempalte(theme: string, color:string, setColor: (col
         localStorage.setItem(LOCAL_STORE.MD_COLOR, curObj.defaultColor);
         
     }
-    // themes.map((item) => {
-    //   // 重新渲染
-    //   if (template === item.id) {
-        
-    //   }
-    // });
 }

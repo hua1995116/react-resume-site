@@ -5,6 +5,7 @@ import { downloadDirect } from "@utils/helper";
 import { mdEditorRef, renderViewStyle, updateTempalte } from "@src/utils/global";
 import { useStores } from "@src/store";
 import { LOCAL_STORE, themes } from '@src/utils/const';
+import { getTheme } from "@utils/changeThemes";
 import "./Square.less";
 import axios from 'axios';
 
@@ -36,19 +37,28 @@ const Square = () => {
   const handleUse = useCallback(() => {
 
     if (template) {
+      const { theme, themeColor, template : md } = template;
       // 设置主题
-      setTheme(template?.theme);
-      // 缓存设置
-      setMdContent(template?.template)
+      setTheme(theme);
+      localStorage.setItem(LOCAL_STORE.MD_THEME, theme);
+      // 设置颜色 
+      setColor(themeColor);
+      localStorage.setItem(LOCAL_STORE.MD_COLOR, themeColor);
+      // 设置内容
+      setMdContent(md)
       // 持久化设置
-      localStorage.setItem(LOCAL_STORE.MD_RESUME, template?.template);
+      localStorage.setItem(LOCAL_STORE.MD_RESUME, md);
       // 跳转
       window.location.href = '#/';
       // 临时设置
-      setTimeout(() => {
-        mdEditorRef && (mdEditorRef.setValue(template?.template));
-        renderViewStyle(template?.themeColor);
-        updateTempalte(template?.theme, template?.themeColor, setColor)
+      setTimeout(async () => {
+        // 设置编辑器内容
+        mdEditorRef && (mdEditorRef.setValue(md));
+        // 拉取主题
+        await getTheme(theme);
+        document.body.style.setProperty("--bg", themeColor);
+        // 设置 html 渲染
+        renderViewStyle(themeColor)
       }, 300);
     }
     

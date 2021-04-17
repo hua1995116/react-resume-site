@@ -1,8 +1,15 @@
-import React, { useState } from "react";
-import { Modal, Tag } from "antd";
+import React, { useState, useCallback, useEffect } from "react";
+import { Modal, Tag, Popconfirm } from "antd";
+import dayjs from 'dayjs';
+import { downloadDirect } from "@utils/helper";
+import { mdEditorRef, renderViewStyle, updateTempalte } from "@src/utils/global";
+import { useStores } from "@src/store";
+import { LOCAL_STORE, themes } from '@src/utils/const';
 import "./Square.less";
+import axios from 'axios';
 
 export interface TemplateItem {
+  id: number;
   title: string;
   thumbnail: string;
   template: string;
@@ -10,38 +17,57 @@ export interface TemplateItem {
   avatar: string;
   themeColor: string;
   theme: string;
+  collect: number;
+  updateTime: number;
 }
 
-const list = [
-  {
-    title: "带证件照的简历模板",
-    thumbnail: "https://s3.qiufengh.com/muji/1616691252491.jpg",
-    template: ``,
-    author: "秋风",
-    avatar:
-      "http://thirdwx.qlogo.cn/mmopen/AaXu8jcgbEIwqMs22mDMDFlgwdGAQJR9DbX4PDMmSVqOSoJ2aibQXibHy5U9DOcPUfSicrYIFfqEX7EKwxZjKrwfHay3HQDTHLl/132",
-    themeColor: "#39393a",
-    theme: "默认（秋风同款）",
-  },
-] as TemplateItem[];
+// const list = []
 
 const Square = () => {
+  const [list, setList] = useState<TemplateItem[]>([]);
+  const { templateStore } = useStores();
+  const { setColor, setMdContent, setTheme } = templateStore;
   const [template, setTemplate] = useState<TemplateItem | null>(null);
-  // const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleOk = () => {
-    // setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
+  const handleCancel = useCallback(() => {
     setTemplate(null);
-    // setIsModalVisible(false);
-  };
+  }, []);
+
+  const handleUse = useCallback(() => {
+
+    if (template) {
+      // 设置主题
+      setTheme(template?.theme);
+      // 缓存设置
+      setMdContent(template?.template)
+      // 持久化设置
+      localStorage.setItem(LOCAL_STORE.MD_RESUME, template?.template);
+      // 跳转
+      window.location.href = '#/';
+      // 临时设置
+      setTimeout(() => {
+        mdEditorRef && (mdEditorRef.setValue(template?.template));
+        renderViewStyle(template?.themeColor);
+        updateTempalte(template?.theme, template?.themeColor, setColor)
+      }, 300);
+    }
+    
+  }, [template, setColor]);
+
+  useEffect(() => {
+    const queryTemplate = async () => {
+      const result = await axios.get('/data/template.json');
+      const resultList = result.data.map((item: any) => ({...item, themeColor: themes.find(theme => item.theme === theme.id)?.defaultColor})) as TemplateItem[];
+      setList(resultList);
+    }
+    queryTemplate();
+  }, [])
+
   return (
     <div className="rs-square-container">
       {list.map((item) => {
         return (
-          <div className="rs-square">
+          <div className="rs-square" key={item.id}>
             <div className="rs-square-bg"></div>
             <div
               className="rs-square-btn"
@@ -65,13 +91,23 @@ const Square = () => {
           }}
           title={template.title}
           visible={!!template}
-          onOk={handleOk}
           width={700}
           onCancel={handleCancel}
           footer={
             <div className="square-footer">
-              <span className="btn btn-normal mr20">拷贝md</span>
-              <span className="btn btn-normal mr20">使用模板</span>
+              <span className="btn btn-normal mr20" onClick={() => {
+                const file = new Blob([template.template]);
+                const url = URL.createObjectURL(file);
+                downloadDirect(url, `${template.title}.md`);
+              }}>下载md</span>
+              <Popconfirm
+                title="确定使用此模板替换你当前编辑器中的内容吗?"
+                onConfirm={handleUse}
+                okText="决定了"
+                cancelText="再想想"
+              >
+                <span className="btn btn-normal mr20">使用模板</span>
+              </Popconfirm>
             </div>
           }
         >
@@ -86,7 +122,7 @@ const Square = () => {
                 </a>
                 <div className="top-info-content">
                   <span className="info-text">作者: 秋风</span>
-                  <span className="info-text">更新日期: 2021-04-15</span>
+                  <span className="info-text">更新日期: {dayjs(template.updateTime).format('YYYY-MM-DD')}</span>
                 </div>
               </div>
               <div className="top-list">
@@ -95,7 +131,7 @@ const Square = () => {
                     <use xlinkHref="#icon-shoucang1" />
                   </svg>
                   <span className="text">收藏</span>
-                  <span className="value">1</span>
+                  <span className="value">{template.collect}+</span>
                 </span>
                 <span className="info-text">
                   <svg className="icon" aria-hidden="true">
@@ -109,7 +145,7 @@ const Square = () => {
                     <use xlinkHref="#icon-color" />
                   </svg>
                   <span className="text">主题色</span>
-                  <span className="value"><Tag color="#39393a">{template.themeColor}</Tag></span>
+                  <span className="value"><Tag color={template.themeColor}>{template.themeColor}</Tag></span>
                 </span>
               </div>
             </div>

@@ -14,7 +14,6 @@ const Shortcuts = () => {
   };
 
   const handleCopy = (value: string) => {
-    console.log(value);
     copyText(value, () => {
       message.success("复制成功，快去粘贴吧~");
     });

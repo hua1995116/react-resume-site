@@ -1,0 +1,70 @@
+.rsC-header {
+  position: relative;
+  width: 100%;
+  min-width: 1240px;
+  height: 60px;
+  z-index: 90;
+  padding: 0 30px 0 40px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px #d0d3db;
+  -webkit-transition: background 0.5s;
+  -moz-transition: background 0.5s;
+  -ms-transition: background 0.5s;
+  transition: background 0.5s;
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    width: 150px;
+    h1 {
+      margin-bottom: 0;
+      overflow: hidden;
+      a {
+        display: block;
+        span {
+          font-size: 24px;
+          vertical-align: middle;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 4px;
+          vertical-align: middle;
+          margin-right: 10px;
+        }
+        margin: 11.5px 0 0 0;
+      }
+    }
+  }
+  &__menu {
+    ul {
+      display: flex;
+      .nav-li {
+        &.current {
+          a {
+            border-bottom: 2px solid #509ffe;
+            color: #509ffe;
+          }
+        }
+        position: relative;
+        line-height: 60px;
+        height: 60px;
+        border-left: none;
+        border-right: none;
+        letter-spacing: .4px;
+        a {
+          margin: 0 25px;
+          position: relative;
+          display: block;
+          margin: 0 30px;
+          font-size: 14px;
+          color: #686868;
+          transition: all .3s;
+          -moz-transition: all .3s;
+          -webkit-transition: all .3s;
+        }
+      }
+    }
+  }
+}
+
+

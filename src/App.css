@@ -15,7 +15,7 @@ html, body {
 
 .rs-body {
   width: 100%;
-  height: calc(100% - 30px)
+  height: 100%;
 }
 
 @font-face {

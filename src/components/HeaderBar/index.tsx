@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Menu,
   Dropdown,
@@ -13,55 +13,20 @@ import {
 import htmlParser from 'rs-md-html-parser';
 import "./index.less";
 import { getTheme } from "@utils/changeThemes";
-import { markdownParserResume, downloadDirect, downloadFetch, markdownParserArticle } from "@utils/helper";
+import { downloadDirect, downloadFetch, markdownParserArticle } from "@utils/helper";
 import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
-import { mdEditorRef, globalEditorCount, setHtmlView } from "@src/utils/global";
+import { mdEditorRef, globalEditorCount, updateTempalte, renderViewStyle } from "@src/utils/global";
 import svgMap from "@src/utils/svgMap";
 import { TUTORIALS_GUIDE, LOCAL_STORE, UPDATE_CONTENT, UPDATE_LOG_VERSION } from '@src/utils/const';
-
-const themes = [
-  {
-    id: "default",
-    defaultColor: "#39393a",
-    name: "默认（秋风同款）",
-    src: "https://s3.qiufengh.com/muji/1616691252491.jpg",
-    isColor: true,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template1.pdf',
-  },
-  {
-    id: "blue",
-    defaultColor: "#5974D4",
-    name: "极简色",
-    src: "https://s3.qiufengh.com/muji/1616691336866.jpg",
-    isColor: true,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template2.pdf',
-  },
-  {
-    id: "orange",
-    defaultColor: "#39393a",
-    name: "朝阳黄",
-    src: "https://s3.qiufengh.com/muji/1616691364694.jpg",
-    isColor: false,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template3.pdf',
-  },
-  // {
-  //   id: "pupple",
-  //   defaultColor: "#36448f",
-  //   name: "全彩风",
-  //   src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
-  //   isColor: true,
-  //   defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
-  // },
-];
-
-const default_theme = localStorage.getItem(LOCAL_STORE.MD_THEME) || themes[0].id;
+import { observer } from "mobx-react";
+import { themes } from '@utils/const';
 
 const is_update = +(localStorage.getItem(LOCAL_STORE.MD_UPDATE_LOG) || 0) >= UPDATE_LOG_VERSION ? false : true;
 
-const HeaderBar = () => {
+const HeaderBar = observer(() => {
   const { templateStore } = useStores();
-  const [template, setTemplate] = useState(default_theme);
+  const { setTempTheme , tempTheme, theme, color, setColor, setTheme, setPreview, mdContent, isPreview } = templateStore;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isExportVisible, setIsExportVisible] = useState(false);
   const [isUsageVisible, setIsUsageVisible] = useState(false);
@@ -70,57 +35,43 @@ const HeaderBar = () => {
   const formRef = useRef<FormInstance>(null);
 
   const handleOk = async () => {
-    await getTheme(template);
-    themes.map((item) => {
-      // 重新渲染
-      if (template === item.id) {
-        templateStore.setColor(item.defaultColor);
-        document.body.style.setProperty("--bg", item.defaultColor);
-        localStorage.setItem(LOCAL_STORE.MD_COLOR, item.defaultColor);
-        templateStore.setPreview(false);
-        const rsViewer = document.querySelector(".rs-view") as HTMLElement;
-        rsViewer.innerHTML = setHtmlView(templateStore.color);
-        rsViewer.style.height = 'auto';
-        // templateStore.setHtml(setHtmlView(item.defaultColor));
-      }
-    });
+    // 更新模板
+    await updateTempalte(tempTheme, color, setColor);
+    // 设置模板
+    setTheme(tempTheme);
+    // 关闭弹窗
     setIsModalVisible(false);
   };
 
-  const uploadMdFile = (e: any) => {
+  const uploadMdFile = useCallback((e: any) => {
     let resultFile = e.target.files[0];
     var reader = new FileReader();
     reader.readAsText(resultFile);
     reader.onload = (e) => {
       if (e.target?.result) {
         mdEditorRef && (mdEditorRef.setValue(e.target.result));
-        templateStore.setPreview(false);
-        const rsViewer = document.querySelector(".rs-view") as HTMLElement;
-        rsViewer.innerHTML = setHtmlView(templateStore.color);
-        rsViewer.style.height = 'auto';
+        setPreview(false);
+        renderViewStyle(color);
       }
     };
-  };
+  }, []);
 
-  const exportMdFile = () => {
-    const file = new Blob([templateStore.mdContent]);
+  const exportMdFile = useCallback(() => {
+    const file = new Blob([mdContent]);
     const url = URL.createObjectURL(file);
     downloadDirect(url, "木及简历.md");
-  };
+  }, [mdContent]);
 
   const templateContent = (
     <div className="template-wrapper">
       {themes.map((item) => {
         return (
           <div
-            className={`template ${item.id === template ? "active" : ""}`}
+            className={`template ${item.id === tempTheme ? "active" : ""}`}
             key={item.id}
             onClick={(e) => {
               e.preventDefault();
-              if (template !== item.id) {
-                setTemplate(item.id);
-                localStorage.setItem(LOCAL_STORE.MD_THEME, item.id);
-              }
+              setTempTheme(item.id);
             }}
           >
             <img className="template-img" src={item.src}></img>
@@ -188,17 +139,17 @@ const HeaderBar = () => {
   }) => {
     // 设置渲染
     const rsViewer = document.querySelector(".rs-view") as HTMLElement;
-    if (!templateStore.isPreview) {
-      templateStore.setPreview(true);
+    if (!isPreview) {
+      setPreview(true);
       htmlParser(rsViewer);
     }
     const pages = rsViewer.dataset.pages || '1';
     const rsLine = document.querySelectorAll('.rs-line-split');
     rsLine.forEach(item => item.parentNode?.removeChild(item));
     const content = localStorage.getItem(LOCAL_STORE.MD_RESUME);
+
     if (content) {
       const htmlContent = document.querySelector('.rs-view-inner')?.innerHTML.replace(/(\n|\r)/g, "");
-      const theme = template;
       let hide = message.loading("正在为你生成简历...", 0);
       if (globalEditorCount < 2) {
         try {
@@ -229,22 +180,21 @@ const HeaderBar = () => {
         hide();
         message.error("生成简历出错，请稍再试!");
       }
-      templateStore.setPreview(false);
-      rsViewer.innerHTML = setHtmlView(templateStore.color);
-      rsViewer.style.height = 'auto';
+      setPreview(false);
+      renderViewStyle(color);
     }
   };
 
   useEffect(() => {
-    getTheme(default_theme);
+    getTheme(theme);
   }, []);
   return (
     <div className="rs-header-bar rs-link">
       <div className="rs-header-bar__left">
-        <a className="rs-logo rs-link">
+        {/* <a className="rs-logo rs-link">
           <img src="https://s3.qiufengh.com/muji/muji-logo.jpg" alt=""/>
           木及简历
-        </a>
+        </a> */}
         <Dropdown overlay={filesMenu} trigger={["click"]}>
           <a
             className="ant-dropdown-link rs-link"
@@ -273,25 +223,12 @@ const HeaderBar = () => {
           导出 pdf
         </a>
       </div>
-      <div className="rs-header-bar__right">
-        <a className="ant-dropdown-link rs-link" href="https://github.com/hua1995116/react-resume-site" target="_blank" dangerouslySetInnerHTML={{
-          __html: svgMap['github']
-        }}>
-        </a>
-        <Dropdown overlay={feedbackMenu}>
-          <a
-            className="ant-dropdown-link rs-link"
-            onClick={(e) => e.preventDefault()}
-          >
-            交流与反馈
-          </a>
-        </Dropdown>
-      </div>
       <Modal
         title="请选择模板"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={() => {
+          setTempTheme(theme);
           setIsModalVisible(false);
         }}
         cancelText="取消"
@@ -373,6 +310,6 @@ const HeaderBar = () => {
       )}
     </div>
   );
-};
+});
 
 export default HeaderBar;

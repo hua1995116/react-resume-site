@@ -1,3 +1,38 @@
+export const themes = [
+  {
+    id: "default",
+    defaultColor: "#39393a",
+    name: "默认（秋风同款）",
+    src: "https://s3.qiufengh.com/muji/1616691252491.jpg",
+    isColor: true,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template1.pdf',
+  },
+  {
+    id: "blue",
+    defaultColor: "#5974D4",
+    name: "极简色",
+    src: "https://s3.qiufengh.com/muji/1616691336866.jpg",
+    isColor: true,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template2.pdf',
+  },
+  {
+    id: "orange",
+    defaultColor: "#39393a",
+    name: "朝阳黄",
+    src: "https://s3.qiufengh.com/muji/1616691364694.jpg",
+    isColor: false,
+    defaultUrl: 'https://s3.qiufengh.com/muji/template/template3.pdf',
+  },
+  // {
+  //   id: "pupple",
+  //   defaultColor: "#36448f",
+  //   name: "全彩风",
+  //   src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
+  //   isColor: true,
+  //   defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
+  // },
+];
+
 export const LOCAL_STORE = {
   MD_RESUME: 'md-resume',
   MD_COUNT: 'md-count',

@@ -20,7 +20,7 @@ const Main = () => {
         <View></View>
       </SplitPane>
       <ColorPicker></ColorPicker>
-      <Shortcuts></Shortcuts>
+      {/* <Shortcuts></Shortcuts> */}
       {/* <OnePage></OnePage> */}
       {/* <Preview></Preview> */}
     </div>

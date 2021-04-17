@@ -1,8 +1,24 @@
-import React from 'react';
-import FeedBack from '../FeedBack';
+import React from "react";
+import { observer } from "mobx-react";
+import { useStores } from "@src/store";
+import FeedBack from "../FeedBack";
 import "./index.less";
 
-const HeaderCommonBar = () => {
+const menu = [
+  {
+    url: "#/",
+    title: "编辑器",
+  },
+  {
+    url: "#/square",
+    title: "模板中心",
+  },
+];
+
+const HeaderCommonBar = observer(() => {
+  const { globalStore } = useStores();
+  const { curTab, setCurTab } = globalStore;
+
   return (
     <div className="rsC-header">
       <div className="rsC-header__logo">
@@ -15,15 +31,38 @@ const HeaderCommonBar = () => {
       </div>
       <div className="rsC-header__menu">
         <ul>
-          <li className="nav-li current"><a href="#/square">模板中心</a></li>
-          <li className="nav-li"><a href="#/">编辑器</a></li>
+          {menu.map((item) => {
+            return (
+              <li
+                key={item.url}
+                className={`nav-li ${curTab === item.url ? "current" : ""}`}
+              >
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurTab(item.url);
+                    window.location.href = item.url;
+                  }}
+                >
+                  {item.title}
+                </a>
+              </li>
+            );
+          })}
           <li className="nav-li">
             <FeedBack></FeedBack>
           </li>
+          {/* <li className={`nav-li ${curTab === '#/square' ? 'current' : ""}`}><a href="#/square" onClick={(e) => {
+          e.preventDefault();
+        }}>模板中心</a></li>
+          <li className={`nav-li ${curTab === '#/' ? 'current' : ""}`}><a href="#/">编辑器</a></li>
+          <li className="nav-li">
+            <FeedBack></FeedBack>
+          </li> */}
         </ul>
       </div>
     </div>
-  )
-}
+  );
+});
 
 export default HeaderCommonBar;

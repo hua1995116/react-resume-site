@@ -50,7 +50,7 @@ const Shortcuts = () => {
           );
         })}
       </Modal>
-      <Tooltip title="icon快捷键">
+      {/* <Tooltip title="icon快捷键">
         <div
           className="rs-shortcuts"
           onClick={() => {
@@ -61,7 +61,16 @@ const Shortcuts = () => {
             <use xlinkHref="#icon-ziyuank" />
           </svg>
         </div>
-      </Tooltip>
+      </Tooltip> */}
+      <a
+        className="ant-dropdown-link rs-link"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsModalVisible(true);
+        }}
+      >
+        icon快捷键
+      </a>
     </>
   );
 };

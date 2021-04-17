@@ -1,11 +1,14 @@
 
 import React from "react";
 import TemplateStore from "./template.store";
+import GlobalStore from "./global.store";
 
 class RootStore {
 	templateStore
+	globalStore
 	constructor() {
 		this.templateStore = new TemplateStore()
+		this.globalStore = new GlobalStore();
 	}
 }
 

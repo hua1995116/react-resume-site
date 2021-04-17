@@ -17,10 +17,10 @@ import { downloadDirect, downloadFetch, markdownParserArticle } from "@utils/hel
 import { getPdf } from "@src/service/htmlToPdf";
 import { useStores } from "@src/store";
 import { mdEditorRef, globalEditorCount, updateTempalte, renderViewStyle } from "@src/utils/global";
-import svgMap from "@src/utils/svgMap";
 import { TUTORIALS_GUIDE, LOCAL_STORE, UPDATE_CONTENT, UPDATE_LOG_VERSION } from '@src/utils/const';
 import { observer } from "mobx-react";
 import { themes } from '@utils/const';
+import Shortcuts from "@src/components/Shortcuts";
 
 const is_update = +(localStorage.getItem(LOCAL_STORE.MD_UPDATE_LOG) || 0) >= UPDATE_LOG_VERSION ? false : true;
 
@@ -213,6 +213,7 @@ const HeaderBar = observer(() => {
         }}>
           使用教程
         </a>
+        <Shortcuts></Shortcuts>
         <a
           href="#"
           className="rs-link"

@@ -11,7 +11,7 @@ const Preview = observer(() => {
   const { isPreview, color, setPreview } = templateStore;
   const handlePreview = () => {
     const rsViewer = document.querySelector(".rs-view") as HTMLElement;
-    if (!templateStore.isPreview) {
+    if (!isPreview) {
       message.success('打开预览模式');
       htmlParser(rsViewer);
     } else {
@@ -26,7 +26,9 @@ const Preview = observer(() => {
   return (
     <div onClick={handlePreview} className="rs-preview">
       <span>{ isPreview ? "预览模式" : "编辑模式" }</span>
-      <Switch size="small" checked={isPreview}/>
+      <Switch size="small" checked={isPreview} onChange={() => {
+        setPreview(!isPreview);
+      }}/>
     </div>
   )
 });

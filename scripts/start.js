@@ -77,7 +77,7 @@ checkBrowsers(paths.appPath, isInteractive)
   .then(port => {
     if (port == null) {
       // We have not found a port.
-      return;
+      throw new Error('server port not available!')
     }
 
     const config = configFactory('development');

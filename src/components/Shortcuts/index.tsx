@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, message, Tooltip } from "antd";
+import { Modal, message } from "antd";
 import svgMap, { SvgType } from "@src/utils/svgMap";
 import { copyText } from "@src/utils/helper";
 import "./index.less";

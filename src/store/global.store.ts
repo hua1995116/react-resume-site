@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 const hash = window.location.hash;
 
-console.log(hash);
+// console.log(hash);
 
 class GlobalStore {
 	curTab = hash;

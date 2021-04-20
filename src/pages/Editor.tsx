@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import debounce from "lodash-es/debounce";
 import { useStores } from "@src/store";
 import { setMdHistory, setMdEditorRef, globalEditorCountIncrease, globalEditorCount, setHtmlView } from "@src/utils/global";
-import { LOCAL_STORE, themes } from '@src/utils/const';
+import { LOCAL_STORE } from '@src/utils/const';
 import { observer } from "mobx-react";
 import "./Editor.less"
 
@@ -20,7 +20,7 @@ const Editor: React.FC<Props> = observer((props) => {
   const { templateStore } = useStores();
   const { isPreview, mdContent, color, theme, setHtml } = templateStore;
   const editorRef = useRef<CodeMirror>(null);
-  console.log(color, theme, '===editor');
+  // console.log(color, theme, '===editor');
   useEffect(() => {
     // 由于子元素是 useEffect 中初始化，因此正常无法获取，需要延迟
     setTimeout(() => {

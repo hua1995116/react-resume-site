@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { Modal, Tag, Popconfirm } from "antd";
 import dayjs from 'dayjs';
 import { downloadDirect } from "@utils/helper";
-import { mdEditorRef, renderViewStyle, updateTempalte } from "@src/utils/global";
+import { mdEditorRef, renderViewStyle } from "@src/utils/global";
 import { useStores } from "@src/store";
 import { LOCAL_STORE, themes } from '@src/utils/const';
 import { getTheme } from "@utils/changeThemes";
@@ -25,6 +25,7 @@ export interface TemplateItem {
 // const list = []
 
 const Square = () => {
+  const { globalStore: { setCurTab }} = useStores();
   const [list, setList] = useState<TemplateItem[]>([]);
   const { templateStore } = useStores();
   const { setColor, setMdContent, setTheme } = templateStore;
@@ -50,6 +51,7 @@ const Square = () => {
       localStorage.setItem(LOCAL_STORE.MD_RESUME, md);
       // 跳转
       window.location.href = '#/';
+      setCurTab('#/')
       // 临时设置
       setTimeout(async () => {
         // 设置编辑器内容

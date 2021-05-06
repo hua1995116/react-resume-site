@@ -1,6 +1,6 @@
 import MarkdownIt from 'markdown-it'
 
-export default function (md: MarkdownIt) {
+export default function MdHContainer(md: MarkdownIt) {
     const heading_map: string[] = [];
 
     md.block.ruler.after(

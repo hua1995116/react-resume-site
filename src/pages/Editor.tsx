@@ -18,7 +18,7 @@ let timerSave: TimerSave = null;
 
 const Editor: React.FC<Props> = observer((props) => {
   const { templateStore } = useStores();
-  const { isPreview, mdContent, color, theme, setHtml } = templateStore;
+  const { isPreview, mdContent, setHtml } = templateStore;
   const editorRef = useRef<CodeMirror>(null);
   // console.log(color, theme, '===editor');
   useEffect(() => {

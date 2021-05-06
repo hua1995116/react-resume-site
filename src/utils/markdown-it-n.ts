@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 
-export default function (md: MarkdownIt) {
-    const defaultParagraphRenderer = md.renderer.rules.paragraph_open || ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+export default function MdNContainer(md: MarkdownIt) {
+    const defaultParagraphRenderer = md.renderer.rules.paragraph_open || ((tokens, idx, options, _env, self) => self.renderToken(tokens, idx, options));
     md.renderer.rules.paragraph_open = function (tokens, idx, options, env, self) {
         let result = '';
         if (idx > 1) {

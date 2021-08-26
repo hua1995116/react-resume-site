@@ -7,13 +7,28 @@
 
 在线地址: https://resume.mdedit.online/
 
-## 开始
+## 开始使用
+
+### Docker 使用 | 推荐
+
+> 使用 docker 运行，默认本地已经拥有可运行的 docker 环境
+
+使用 `Terminal` 终端，运行下面命令
+
+```sh
+$ docker run --rm -d -p 3000:80 yanzhiwei147/muji
+```
+
+打开 [`http://localhost:3000/`](http://localhost:3000/)
+
+### 源码使用
 
 ```
-yarn install
-yarn start 
+$ git clone https://github.com/hua1995116/react-resume-site.git && cd react-resume-site
+$ yarn install && yarn start 
 ```
-打开 http://localhost:3000/
+
+打开 [`http://localhost:3000/`](http://localhost:3000/)
 
 ## 贡献
 

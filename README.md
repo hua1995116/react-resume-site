@@ -4,7 +4,7 @@
 
 我们希望帮助你 **「以最简单的方式来写好简历，只需专注于自身的内容而无需关注排版」**
 
-立即体验 👉  https://resume.mdedit.online 
+立即体验 👉  https://www.mujicv.com
 
 # 功能特点
 

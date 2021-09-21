@@ -62,6 +62,6 @@ $ yarn install && yarn start
 
 qq群
 
-<img src="https://s3.qiufengh.com/muji/qq-group.png" width="300" />
+<img src="https://s3.qiufeng.blue/muji/qq-group.png" width="300" />
 
 

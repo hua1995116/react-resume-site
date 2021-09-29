@@ -16,7 +16,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
-    "@uiw/react-codemirror": "^3.0.5",
+    "@uiw/react-codemirror": "^3.2.1",
     "antd": "^4.12.3",
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",

@@ -95,7 +95,7 @@
 .rs-view::before {
   width: 300px;
   height: 300px;
-  content: url(https://s3.qiufengh.com/muji/pen-style.svg);
+  content: url(https://s3.qiufeng.blue/muji/pen-style.svg);
   position: absolute;
   right: 0;
   z-index: 1;
@@ -104,7 +104,7 @@
 .rs-view::after {
   width: 200px;
   height: 200px;
-  content: url(https://s3.qiufengh.com/muji/pen-style.svg);
+  content: url(https://s3.qiufeng.blue/muji/pen-style.svg);
   position: absolute;
   left: -47px;
   bottom: 43px;

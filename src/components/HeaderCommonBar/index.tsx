@@ -24,7 +24,7 @@ const HeaderCommonBar = observer(() => {
       <div className="rsC-header__logo">
         <h1>
           <a href="/">
-            <img src="https://s3.qiufengh.com/muji/muji-logo-v2.jpg" alt="" />
+            <img src="https://s3.qiufeng.blue/muji/muji-logo-v2.jpg" alt="" />
             <span>木及简历</span>
           </a>
         </h1>

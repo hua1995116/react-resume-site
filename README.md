@@ -64,7 +64,7 @@ $ yarn install && yarn start
 
 ## 交流
 
-微信群（ 技术客服微信: qiufengblue ）
+微信群（ 作者微信: qiufengblue ）
 
 <img src="https://user-images.githubusercontent.com/12070073/134554185-e650e9bd-cde1-4182-9fbe-1ad3f60ef6e1.png" width="300" />
 

@@ -3,47 +3,48 @@ export const themes = [
     id: "default",
     defaultColor: "#39393a",
     name: "默认（秋风同款）",
-    src: "https://s3.qiufengh.com/muji/1616691252491.jpg",
+    src: "https://s3.qiufeng.blue/muji/1616691252491.jpg",
     isColor: true,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template1.pdf',
+    defaultUrl: "https://s3.qiufeng.blue/muji/template/template1.pdf",
   },
   {
     id: "blue",
     defaultColor: "#5974D4",
     name: "极简色",
-    src: "https://s3.qiufengh.com/muji/1616691336866.jpg",
+    src: "https://s3.qiufeng.blue/muji/1616691336866.jpg",
     isColor: true,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template2.pdf',
+    defaultUrl: "https://s3.qiufeng.blue/muji/template/template2.pdf",
   },
   {
     id: "orange",
     defaultColor: "#39393a",
     name: "朝阳黄",
-    src: "https://s3.qiufengh.com/muji/1616691364694.jpg",
+    src: "https://s3.qiufeng.blue/muji/1616691364694.jpg",
     isColor: false,
-    defaultUrl: 'https://s3.qiufengh.com/muji/template/template3.pdf',
+    defaultUrl: "https://s3.qiufeng.blue/muji/template/template3.pdf",
   },
   // {
   //   id: "pupple",
   //   defaultColor: "#36448f",
   //   name: "全彩风",
-  //   src: "https://s3.qiufengh.com/muji/WechatIMG2705.jpg",
+  //   src: "https://s3.qiufeng.blue/muji/WechatIMG2705.jpg",
   //   isColor: true,
-  //   defaultUrl: 'https://s3.qiufengh.com/muji/template/template4.pdf',
+  //   defaultUrl: 'https://s3.qiufeng.blue/muji/template/template4.pdf',
   // },
 ];
 
 export const LOCAL_STORE = {
-  MD_RESUME: 'md-resume',
-  MD_COUNT: 'md-count',
-  MD_THEME: 'md-theme',
-  MD_COLOR: 'md-color',
-  MD_THEME_LIST: 'md-theme-list',
-  MD_UPDATE_LOG: 'md-update-log',
-  MD_HISTORY: 'md-history'
-}
+  MD_RESUME: "md-resume",
+  MD_COUNT: "md-count",
+  MD_THEME: "md-theme",
+  MD_COLOR: "md-color",
+  MD_THEME_LIST: "md-theme-list",
+  MD_UPDATE_LOG: "md-update-log",
+  MD_HISTORY: "md-history",
+};
 
-export const INIT_COLOR = localStorage.getItem(LOCAL_STORE.MD_COLOR) || '#39393a';
+export const INIT_COLOR =
+  localStorage.getItem(LOCAL_STORE.MD_COLOR) || "#39393a";
 
 document.body.style.setProperty("--bg", INIT_COLOR);
 
@@ -200,7 +201,7 @@ export const TUTORIALS_GUIDE = `
 
 \\## 基础技能
 
-![1615716349000](https://s3.qiufengh.com/blog/1615716349000.jpg)
+![1615716349000](https://s3.qiufeng.blue/blog/1615716349000.jpg)
 
 
 
@@ -209,7 +210,7 @@ export const TUTORIALS_GUIDE = `
 
 示例:
 
-![WechatIMG30782](https://s3.qiufengh.com/blog/WechatIMG30782.png)
+![WechatIMG30782](https://s3.qiufeng.blue/blog/WechatIMG30782.png)
 
 
 ## 3.换主题颜色？
@@ -218,11 +219,11 @@ export const TUTORIALS_GUIDE = `
 
 点击预览的右上方按钮，可以进行更换主题色景。
 
-![1615716042526](https://s3.qiufengh.com/blog/1615716042526.jpg)
+![1615716042526](https://s3.qiufeng.blue/blog/1615716042526.jpg)
 
 注意，只有标记可换色的模板才可以进行更换主题色。
 
-![1615716378016](https://s3.qiufengh.com/blog/1615716378016.jpg)
+![1615716378016](https://s3.qiufeng.blue/blog/1615716378016.jpg)
 
 
 ## 4.遇到生成失败问题
@@ -234,11 +235,11 @@ export const TUTORIALS_GUIDE = `
 你在使用中有任何问题，可以添加技术客服微信（qiufengblue）进行咨询，技术客服会拉你进入讨论群，讨论群中包含且不限于，本项目的未来发展、问题解答以及功能更新。
 
 
-`
+`;
 
 export const UPDATE_CONTENT = `
 由于产品正在建设初期，希望广大网友能够多多提供一些建议，你们的建议使我们前进的动力。
-<img src="https://s3.qiufengh.com/blog/1618197167151.jpg" style="width:200px" />
+<img src="https://s3.qiufeng.blue/blog/1618197167151.jpg" style="width:200px" />
 
 ## 2021.04.17
 - 增加简历模板中心

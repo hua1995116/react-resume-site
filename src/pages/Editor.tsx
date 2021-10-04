@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { IEditorInstance } from "@uiw/react-codemirror";
 import debounce from "lodash-es/debounce";
 import { useStores } from "@src/store";
 import { setMdHistory, setMdEditorRef, globalEditorCountIncrease, globalEditorCount, setHtmlView } from "@src/utils/global";
@@ -19,7 +19,7 @@ let timerSave: TimerSave = null;
 const Editor: React.FC<Props> = observer((props) => {
   const { templateStore } = useStores();
   const { isPreview, mdContent, setHtml } = templateStore;
-  const editorRef = useRef<CodeMirror>(null);
+  const editorRef = useRef<IEditorInstance>(null);
   // console.log(color, theme, '===editor');
   useEffect(() => {
     // 由于子元素是 useEffect 中初始化，因此正常无法获取，需要延迟
@@ -30,7 +30,7 @@ const Editor: React.FC<Props> = observer((props) => {
 
   return (
     <>
-      <div className="rs-editor-cover" style={{display: isPreview ? 'flex' : 'none'}}>预览中，不可编辑</div>
+      <div className="rs-editor-cover" style={{ display: isPreview ? 'flex' : 'none' }}>预览中，不可编辑</div>
       <CodeMirror
         ref={editorRef}
         value={mdContent}

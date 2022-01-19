@@ -27,3 +27,4 @@ test.js
 .eslintcache
 template.md
 templates/*
+.idea

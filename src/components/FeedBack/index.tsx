@@ -11,11 +11,11 @@ const FeedBack = () => {
         <div className="rs-feed-group">
           <div className="rs-feed-group__wechat">
             <div className="rs-feed-group__text">微信群(wx号: qiufengblue)</div>
-            <div className="bg"></div>
+            <div className="bg"/>
           </div>
           <div className="rs-feed-group__qq">
             <div className="rs-feed-group__text">qq群(699817990)</div>
-            <div className="bg"></div>
+            <div className="bg"/>
           </div>
         </div>
       </Menu.Item>

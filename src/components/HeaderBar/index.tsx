@@ -11,7 +11,6 @@ import {
   Tag
 } from "antd";
 import htmlParser from 'rs-md-html-parser';
-import "./index.less";
 import { getTheme } from "@utils/changeThemes";
 import { downloadDirect, downloadFetch, markdownParserArticle } from "@utils/helper";
 import { getPdf } from "@src/service/htmlToPdf";
@@ -23,7 +22,9 @@ import { themes } from '@utils/const';
 import Shortcuts from "@src/components/Shortcuts";
 import History from "@src/components/History";
 
-const is_update = +(localStorage.getItem(LOCAL_STORE.MD_UPDATE_LOG) || 0) >= UPDATE_LOG_VERSION ? false : true;
+import "./index.less";
+
+const is_update = +(localStorage.getItem(LOCAL_STORE.MD_UPDATE_LOG) || 0) < UPDATE_LOG_VERSION;
 
 const HeaderBar = observer(() => {
   const { templateStore } = useStores();
@@ -45,17 +46,17 @@ const HeaderBar = observer(() => {
   };
 
   const uploadMdFile = useCallback((e: any) => {
-    let resultFile = e.target.files[0];
-    var reader = new FileReader();
+    const resultFile = e.target.files[0];
+    const reader = new FileReader();
     reader.readAsText(resultFile);
     reader.onload = (e) => {
-      if (e.target?.result) {
-        mdEditorRef && (mdEditorRef.setValue(e.target.result));
+      if (e.target?.result && !mdEditorRef) {
+        mdEditorRef.setValue(e.target.result);
         setPreview(false);
         renderViewStyle(color);
       }
     };
-  }, []);
+  }, [color, setPreview]);
 
   const exportMdFile = useCallback(() => {
     const file = new Blob([mdContent]);
@@ -75,7 +76,7 @@ const HeaderBar = observer(() => {
               setTempTheme(item.id);
             }}
           >
-            <img className="template-img" src={item.src}></img>
+            <img className="template-img" src={item.src}/>
             <p className="template-title">{item.name}
               {item.isColor && <Tag color="#2db7f5">可换色</Tag>}
             </p>
@@ -113,10 +114,10 @@ const HeaderBar = observer(() => {
   };
 
   const exportPdf = async ({
-    name,
-    isOnePage,
-    isMark,
-  }: {
+                             name,
+                             isOnePage,
+                             isMark,
+                           }: {
     name: string;
     isOnePage: boolean;
     isMark: boolean;
@@ -197,8 +198,8 @@ const HeaderBar = observer(() => {
         }}>
           使用教程
         </a>
-        <Shortcuts></Shortcuts>
-        <History></History>
+        <Shortcuts/>
+        <History/>
         <a
           href="#"
           className="rs-link"

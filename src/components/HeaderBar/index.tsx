@@ -50,7 +50,7 @@ const HeaderBar = observer(() => {
     const reader = new FileReader();
     reader.readAsText(resultFile);
     reader.onload = (e) => {
-      if (e.target?.result && !mdEditorRef) {
+      if (e.target?.result && mdEditorRef) {
         mdEditorRef.setValue(e.target.result);
         setPreview(false);
         renderViewStyle(color);

@@ -7,19 +7,14 @@ import { LOCAL_STORE } from '@src/utils/const';
 import { observer } from "mobx-react";
 import "./Editor.less"
 
-
-interface Props {
-
-}
-
 type TimerSave = number | null;
 
 let timerSave: TimerSave = null;
 
-const Editor: React.FC<Props> = observer((props) => {
+const Editor: React.FC = observer(() => {
   const { templateStore } = useStores();
   const { isPreview, mdContent, setHtml } = templateStore;
-  
+
   const setRefCallback = useCallback((node: IEditorInstance) => {
     if (node?.editor) {
       setMdEditorRef(node.editor)

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useCallback } from "react";
 import CodeMirror, { IEditorInstance } from "@uiw/react-codemirror";
 import debounce from "lodash-es/debounce";
 import { useStores } from "@src/store";
@@ -7,32 +7,25 @@ import { LOCAL_STORE } from '@src/utils/const';
 import { observer } from "mobx-react";
 import "./Editor.less"
 
-
-interface Props {
-
-}
-
 type TimerSave = number | null;
 
 let timerSave: TimerSave = null;
 
-const Editor: React.FC<Props> = observer((props) => {
+const Editor: React.FC = observer(() => {
   const { templateStore } = useStores();
   const { isPreview, mdContent, setHtml } = templateStore;
-  const editorRef = useRef<IEditorInstance>(null);
-  // console.log(color, theme, '===editor');
-  useEffect(() => {
-    // 由于子元素是 useEffect 中初始化，因此正常无法获取，需要延迟
-    setTimeout(() => {
-      setMdEditorRef(editorRef.current?.editor);
-    }, 0)
-  }, []);
+
+  const setRefCallback = useCallback((node: IEditorInstance) => {
+    if (node?.editor) {
+      setMdEditorRef(node.editor)
+    }
+  }, [])
 
   return (
     <>
       <div className="rs-editor-cover" style={{ display: isPreview ? 'flex' : 'none' }}>预览中，不可编辑</div>
       <CodeMirror
-        ref={editorRef}
+        ref={setRefCallback}
         value={mdContent}
         options={{
           theme: "github-light",

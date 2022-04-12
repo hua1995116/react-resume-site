@@ -2,11 +2,8 @@ import React from 'react';
 import { observer } from "mobx-react";
 import { useStores } from "@src/store";
 import Preview from '@src/components/Preview';
-interface Props {
 
-}
-
-const View: React.FC<Props> = observer(() => {
+const View: React.FC = observer(() => {
   const { templateStore } = useStores();
   return (
     <div className="rs-view-wrapper">

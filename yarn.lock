@@ -1154,10 +1154,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.15.4":
-  version "7.15.4"
-  resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
-  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
+"@babel/runtime@7.15.3":
+  version "7.15.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
+  integrity sha512-OvwMLqNXkCXSz1kSm58sEsNuhqOx/fKpnUnKnFB5v8uDda5bLNEHNgKPvhDN6IU0LDcnHQ90LlJ0Q6jnyBSIBA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2155,13 +2155,13 @@
     "@typescript-eslint/types" "4.22.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/react-codemirror@^3.2.1":
-  version "3.2.7"
-  resolved "https://registry.npmmirror.com/@uiw/react-codemirror/-/react-codemirror-3.2.7.tgz#c22648fddeb8836061b9a824f87db24f27067caf"
-  integrity sha512-aSQKN76Phj6v0okTs/MRanA9B29yeeemNqBh5pVL7TsSuSsyJS8auhvIDF7PKDxAS/u2I+V13SklA1+yFaiAZg==
+"@uiw/react-codemirror@^3.0.5":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.2.1.tgz#355fda3a23143a9dcac23309397db95c90126630"
+  integrity sha512-taciFidmB/V8ve5SElMnMsRNwTVWCwTK16dsP9RIfPbbourVnmt9Tb+FIoeA6Jdlej4M9nr4X9IXtaw/GmqDPg==
   dependencies:
-    "@babel/runtime" "7.15.4"
-    codemirror "5.63.0"
+    "@babel/runtime" "7.15.3"
+    codemirror "5.62.3"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -3817,10 +3817,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.npm.taobao.org/code-point-at/download/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codemirror@5.63.0:
-  version "5.63.0"
-  resolved "https://registry.npmmirror.com/codemirror/-/codemirror-5.63.0.tgz#070a699108badd9c118b7261ac2e9793acdbb149"
-  integrity sha512-KlLWRPggDg2rBD1Mx7/EqEhaBdy+ybBCVh/efgjBDsPpMeEu6MbTAJzIT4TuCzvmbTEgvKOGzVT6wdBTNusqrg==
+codemirror@5.62.3:
+  version "5.62.3"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.62.3.tgz#5cfdee6931c8b2d1b39ae773aaaaec2cc6b5558e"
+  integrity sha512-zZAyOfN8TU67ngqrxhOgtkSAGV9jSpN1snbl8elPtnh9Z5A11daR405+dhLzLnuXrwX0WCShWlybxPN3QC/9Pg==
 
 collect-v8-coverage@^1.0.0:
   version "1.0.1"
